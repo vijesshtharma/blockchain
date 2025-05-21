@@ -1,0 +1,308 @@
+//exno5:ccs339- blockchain
+Dicegame.sol:
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.5.0;
+
+contract Dice {
+    struct Bet {
+        uint8 currentBet;
+        bool isBetSet;
+        uint8 destiny;
+    }
+
+    mapping(address => Bet) private bets;
+    uint8 private randomFactor;
+
+    event NewBetIsSet(address indexed bidder, uint8 currentBet);
+    event GameResult(address indexed bidder, uint8 currentBet, uint8 destiny, bool won);
+
+    
+    function placeBet(uint8 _bet) public {
+        require(_bet >= 1 && _bet <= 6, "Bet must be between 1 and 6");
+        require(!bets[msg.sender].isBetSet, "Previous bet not resolved");
+
+        bets[msg.sender] = Bet({
+            currentBet: _bet,
+            isBetSet: true,
+            destiny: 0
+        });
+
+        randomFactor += _bet;
+
+        emit NewBetIsSet(msg.sender, _bet);
+    }
+
+    
+    function roll() public returns (address, uint8, uint8, bool) {
+        require(bets[msg.sender].isBetSet, "No active bet");
+
+        uint8 destiny = random();
+        bets[msg.sender].destiny = destiny;
+        randomFactor += destiny;
+
+        bool won = false;
+        if (destiny == bets[msg.sender].currentBet) {
+            uint256 reward = 0.01 ether;  
+            require(address(this).balance >= reward, "Not enough balance");
+            _transferReward(msg.sender, reward);
+            won = true;
+        }
+
+        emit GameResult(msg.sender, bets[msg.sender].currentBet, destiny, won);
+
+        
+        bets[msg.sender].isBetSet = false;
+
+        return (msg.sender, bets[msg.sender].currentBet, destiny, won);
+    }
+
+    function isBetSet() public view returns (bool) {
+        return bets[msg.sender].isBetSet;
+    }
+
+    function random() private view returns (uint8) {
+        uint256 blockValue = uint256(blockhash(block.number - 1)) + now + randomFactor;
+        return uint8((blockValue % 6) + 1);
+    }
+
+    function _transferReward(address winner, uint256 amount) private {
+        address(uint160(winner)).transfer(amount);
+    }
+
+    function() external payable {}
+
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+
+--------------------------------------------------------------------------------------------------------
+2_deploy_contracts.js:
+
+const Dice = artifacts.require("Dice");
+
+module.exports = function (deployer) {
+  deployer.deploy(Dice);
+};
+--------------------------------------------------------------------------------------------------------
+
+migration.sol:
+
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.22 <0.9.0;
+
+contract Migrations {
+    address public owner = msg.sender;
+    uint public last_completed_migration;
+
+    modifier restricted() {
+        require(
+            msg.sender == owner,
+            "This function is restricted to the contract's owner"
+        );
+        _;
+    }
+
+    function setCompleted(uint completed) public restricted {
+        last_completed_migration = completed;
+    }
+}
+---------------------------------------------------------------------------------------------------------
+1_initial_migrate:
+
+const Migrations = artifacts.require("Migrations");
+
+module.exports = function (deployer) {
+  deployer.deploy(Migrations);
+};
+
+----------------------------------------------------------------------------------------------------------
+
+commands:
+
+const accounts = await web3.eth.getAccounts()
+const dice = await Dice.deployed()
+
+// Fund the contract
+await web3.eth.sendTransaction({ from: accounts[0], to: dice.address, value: web3.utils.toWei("1", "ether") })
+
+// Show contract balance
+let balance = await dice.getContractBalance()
+console.log("Contract Balance:", web3.utils.fromWei(balance, "ether"), "ETH")
+
+// User manually chooses number 5
+await dice.placeBet(5, { from: accounts[1] })
+
+// Confirm bet
+let isSet = await dice.isBetSet({ from: accounts[1] })
+console.log("Bet set?", isSet)
+
+// Roll the dice
+let tx = await dice.roll({ from: accounts[1] })
+let result = tx.logs[0].args
+console.log("Bet:", result.currentBet.toString())
+console.log("Rolled:", result.destiny.toString())
+console.log("Won?", result.won)
+
+// Show contract balance again
+balance = await dice.getContractBalance()
+console.log("Contract Balance after roll:", web3.utils.fromWei(balance, "ether"), "ETH")
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Output:
+
+student@rv-ml2:/home/soft$ mkdir dice1
+student@rv-ml2:/home/soft$ cd dice1
+student@rv-ml2:/home/soft/dice1$ code .
+student@rv-ml2:/home/soft$ sudo truffle init
+student@rv-ml2:/home/soft/dice1$ sudo truffle compile
+[sudo] password for student: 
+student@rv-ml2:/home/soft/dice1$ sudo truffle migrate
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'ganache'
+> Network id:      5777
+> Block gas limit: 6721975
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x792d6646c073d735a8d4400236bcff729083c8f691148fc9e36431d75fcc9636
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x22b0ab608D503424A70abF14aE5A727bD1A508Bc
+   > account:             0xa5f9636B2A3e166d57a78F6Cb1B54dEe4Ee15e53
+   > balance:             99.99584198
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Replacing 'Dice'
+   ----------------
+   > transaction hash:    0x33b55b064067b1faf041e36e5a4ae3be22d89b9b6694025467c79d1da31362f1
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x8ED9700fa75Ed30915E3036945756c58524630b1
+   > account:             0xa5f9636B2A3e166d57a78F6Cb1B54dEe4Ee15e53
+   > balance:             99.98474584
+   > gas used:            554807
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01109614 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.01109614 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.01525416 ETH
+
+student@rv-ml2:/home/soft/dice1$ sudo truffle console
+truffle(ganache)> const accounts = await web3.eth.getAccounts()
+undefined
+truffle(ganache)> const dice = await Dice.deployed()
+undefined
+truffle(ganache)> await web3.eth.sendTransaction({ from: accounts[0], to: dice.address, value: web3.utils.toWei("1", "ether") })
+{
+  transactionHash: '0xe0477210bf4020cbd4890280f4f8a0baec3356ec09480121ed4a55dfc034de05',
+  transactionIndex: 0,
+  blockNumber: 4,
+  blockHash: '0x33ad2f3194a6f2cb7a6cf618a0451869d34fa6d4dd243890e3819e55f85e9b54',
+  from: '0xa5f9636b2a3e166d57a78f6cb1b54dee4ee15e53',
+  to: '0x8ed9700fa75ed30915e3036945756c58524630b1',
+  cumulativeGasUsed: 21040,
+  gasUsed: 21040,
+  contractAddress: null,
+  logs: [],
+  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+  status: true,
+  effectiveGasPrice: '0x4a817c800',
+  type: '0x0'
+}
+truffle(ganache)> let balance = await dice.getContractBalance()
+undefined
+truffle(ganache)> console.log("Contract Balance:", web3.utils.fromWei(balance, "ether"), "ETH")
+Contract Balance: 1 ETH
+undefined
+truffle(ganache)> await dice.placeBet(5, { from: accounts[1] })
+{
+  tx: '0x2137f85c0a8b841da905304fd3ce1d0c92a934a6be3388f7f0ae2d2067ec5712',
+  receipt: {
+    transactionHash: '0x2137f85c0a8b841da905304fd3ce1d0c92a934a6be3388f7f0ae2d2067ec5712',
+    transactionIndex: 0,
+    blockNumber: 5,
+    blockHash: '0xa47d74382d69716f83499823143eff3415968f28e0db69498be3e50abf0cff22',
+    from: '0xd674e429ef8e5f5cb90f6742c14607e0daa4389f',
+    to: '0x8ed9700fa75ed30915e3036945756c58524630b1',
+    cumulativeGasUsed: 68653,
+    gasUsed: 68653,
+    contractAddress: null,
+    logs: [ [Object] ],
+    logsBloom: '0x00000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000004000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000400010000000000000000000000000000000000000000000000000000080000000040000000000000000000000000000000000000000000',
+    status: true,
+    effectiveGasPrice: '0x4a817c800',
+    type: '0x0',
+    rawLogs: [ [Object] ]
+  },
+  logs: [
+    {
+      address: '0x8ED9700fa75Ed30915E3036945756c58524630b1',
+      blockHash: '0xa47d74382d69716f83499823143eff3415968f28e0db69498be3e50abf0cff22',
+      blockNumber: 5,
+      logIndex: 0,
+      removed: false,
+      transactionHash: '0x2137f85c0a8b841da905304fd3ce1d0c92a934a6be3388f7f0ae2d2067ec5712',
+      transactionIndex: 0,
+      id: 'log_734254bc',
+      event: 'NewBetIsSet',
+      args: [Result]
+    }
+  ]
+}
+truffle(ganache)> let isSet = await dice.isBetSet({ from: accounts[1] })
+undefined
+truffle(ganache)> console.log("Bet set?", isSet)
+Bet set? true
+undefined
+truffle(ganache)> let tx = await dice.roll({ from: accounts[1] })
+undefined
+truffle(ganache)> let result = tx.logs[0].args
+undefined
+truffle(ganache)> console.log("Bet:", result.currentBet.toString())
+Bet: 5
+undefined
+truffle(ganache)> console.log("Rolled:", result.destiny.toString())
+Rolled: 1
+undefined
+truffle(ganache)> console.log("Won?", result.won)
+Won? false
+undefined
+truffle(ganache)> balance = await dice.getContractBalance()
+undefined
+truffle(ganache)> console.log("Contract Balance after roll:", web3.utils.fromWei(balance, "ether"), "ETH")
+Contract Balance after roll: 1 ETH
+undefined
+truffle(ganache)> .exit
+
+----------------------------------------------------------------------------------------------------------------------
+
+

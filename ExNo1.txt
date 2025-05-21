@@ -1,0 +1,194 @@
+Ex:No:1
+
+Install and understand Docker container, Node.js, Java and Hyperledger Fabric, Ethereum and perform necessary software installation on local machine/create instance on cloud to run
+
+\\Installation
+student@CSE-RL-WS-01:~$ sudo apt-get update
+
+[sudo] password for student: 
+
+//starting line
+Hit:1 https://download.docker.com/linux/ubuntu jammy InRelease
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]  
+//ending line
+Get:15 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [296 kB]
+Fetched 10.6 MB in 6s (1,808 kB/s)       
+Reading package lists... Done
+
+student@CSE-RL-WS-01:~$ sudo apt install -y nodejs npm
+
+//starting line
+linux-hwe-6.2-headers-6.2.0-26 linux-image-6.2.0-26-generic
+linux-modules-6.2.0-26-generic linux-modules-extra-6.2.0-26-generic
+//ending line
+Reading package lists... Done
+
+student@CSE-RL-WS-01:~$ sudo apt install -y openjdk-17-jdk
+
+
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+openjdk-17-jdk is already the newest version (17.0.14+7-1~22.04.1).
+
+student@CSE-RL-WS-01:~$ sudo apt install -y python3 python3-pip
+
+\\Starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3 is already the newest version (3.10.6-1~22.04.1).
+python3 set to manually installed.
+
+student@CSE-RL-WS-01:~$ sudo apt install  git
+
+\\Starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+git is already the newest version (1:2.34.1-1ubuntu1.12).
+
+student@CSE-RL-WS-01:~$ sudo apt install -y curl
+
+\\Starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+curl is already the newest version (7.81.0-1ubuntu1.20).
+
+student@CSE-RL-WS-01:~$ node -v
+v12.22.9
+
+student@CSE-RL-WS-01:~$ npm -v
+8.5.1
+
+student@CSE-RL-WS-01:~$ java -version
+openjdk version "21.0.6" 2025-01-21
+OpenJDK Runtime Environment (build 21.0.6+7-Ubuntu-122.04.1)
+OpenJDK 64-Bit Server VM (build 21.0.6+7-Ubuntu-122.04.1, mixed mode, sharing)
+
+student@CSE-RL-WS-01:~$ python3 --version
+Python 3.10.12
+
+student@CSE-RL-WS-01:~$ git --version
+git version 2.34.1
+
+student@CSE-RL-WS-01:~$ curl --version
+curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.18
+Release-Date: 2022-01-05
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp 
+
+student@CSE-RL-WS-01:~$ sudo apt install docker
+
+\\Starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+docker is already the newest version (1.5-2).
+
+student@CSE-RL-WS-01:~$ sudo apt install docker-compose 
+
+\\Starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+docker-compose is already the newest version (1.29.2-1).
+
+student@CSE-RL-WS-01:~$ sudo apt install docker-ce
+
+\\Starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+docker-ce is already the newest version (5:28.0.4-1~ubuntu.22.04~jammy).
+
+student@CSE-RL-WS-01:~$ sudo usermod -aG docker student
+
+student@CSE-RL-WS-01:~$ docker --version
+Docker version 28.0.4, build b8034c0
+
+student@CSE-RL-WS-01:~$ docker-compose --version
+docker-compose version 1.29.2, build unknown
+
+student@CSE-RL-WS-01:~$ sudo systemctl start docker
+
+student@CSE-RL-WS-01:~$ sudo systemctl status docker
+
+\\Starting line
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset>
+     Active: active (running) since Wed 2025-04-09 10:34:51 IST; 46min ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+      
+student@CSE-RL-WS-01:~$ sudo docker pull hello-world  
+
+Using default tag: latest
+latest: Pulling from library/hello-world
+Digest: sha256:424f1f86cdf501deb591ace8d14d2f40272617b51b374915a87a2886b2025ece
+Status: Image is up to date for hello-world:latest
+docker.io/library/hello-world:latest
+
+student@CSE-RL-WS-01:~$ sudo docker run hello-world 
+
+\\Starting line
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+student@CSE-RL-WS-01:~$ docker images
+
+hello-world                          latest    74cc54e27dc4   2 months ago   10.1kB
+hyperledger/fabric-nodeenv           2.5       9450edc1d320   4 months ago   405MB
+couchdb                              3.3.3     65340ff2a419   5 months ago   222
+
+student@CSE-RL-WS-01:~$ docker search Ubuntu
+NAME                             DESCRIPTION                                     STARS     OFFICIAL
+ubuntu                           Ubuntu is a Debian-based Linux operating sys…   17535     [OK]
+ubuntu/squid                     Squid is a caching proxy for the Web. Long-t…   108       
+
+student@CSE-RL-WS-01:~$ docker run -it ubuntu
+
+\\Starting line
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+2726e237d1a3: Pull complete 
+Digest: sha256:45243615f4992816784f678ce6c31b34bd07ba09279f740d8d014a9b855c531d
+Status: Downloaded newer image for ubuntu:latest
+root@b7f5eee13ca7:/# 
+
+student@CSE-RL-WS-01:~$ docker pull nginx
+
+\\Starting line
+Using default tag: latest
+latest: Pulling from library/nginx
+8a628cdd7ccc: Pull complete 
+75b642592991: Pull complete 
+553c8756fd66: Pull complete 
+10fe6d2248e3: Pull complete 
+3b6e18ae4ce6: Pull complete 
+3dce86e3b082: Pull complete 
+e81a6b82cf64: Pull complete 
+Digest: sha256:09369da6b10306312cd908661320086bf87fbae1b6b0c49a1f50ba531fef2eab
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+
+student@CSE-RL-WS-01:~$ docker run --name my-nginx -p 8080:80 -d nginx
+28ef1b253bc6a31f4844b4e22b62fdb80c37f0ca0da53ca65cdb1a585a56765b
+
+student@CSE-RL-WS-01:~$ sudo docker ps -a
+
+[sudo] password for student: 
+CONTAINER ID   IMAGE                              COMMAND                  CREATED              STATUS                      PORTS                                     NAMES
+28ef1b253bc6   nginx                              "/docker-entrypoint.…"   About a minute ago   Up About a minute           0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx
+b7f5eee13ca7   ubuntu                             "/bin/bash"              7 minutes ago        Exited (0) 2 minutes ago                                              unruffled_golick
+3bf06505a31c   hello-world                        "/hello"                 16 minutes ago       Exited (0) 16 minutes ago                                             musing_shtern
+
+student@CSE-RL-WS-01:~$ sudo apt-get autoremove -y
+
+//starting line
+After this operation, 851 MB disk space will be freed.
+(Reading database ... 390434 files and directories currently installed.)
+Removing docker-ce-rootless-extras (5:28.0.4-1~ubuntu.22.04~jammy) ...
+Removing slirp4netns (1.0.1-2) ...
+Removing libslirp0:amd64 (4.6.1-1build1) ...
+

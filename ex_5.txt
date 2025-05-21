@@ -1,0 +1,1329 @@
+sce251127@RV-ML2-UBU:/home/soft$ ./ganache-2.7.1-linux-x86_64.AppImage 
+11:21:52.200 › Checking for update
+11:21:53.732 › Update for version 2.7.1 is not available (latest version: 2.7.1, downgrade is disallowed).
+listen to truffle
+listen to truffle
+^CTruffle Integration process exited prematurely due to signal 'SIGINT'.
+sce251127@RV-ML2-UBU:/home/soft$ 
+
+
+-------------------------------------
+sce251127@RV-ML2-UBU:/home/soft$ cd
+sce251127@RV-ML2-UBU:~$ mkdir roledice
+sce251127@RV-ML2-UBU:~$ mkdir rolldice
+sce251127@RV-ML2-UBU:~$ ls
+Desktop     Ex3      go                             Pictures  snap
+Dockerfile  export   go1.17.3.linux-amd64.tar.gz    Public    Templates
+Documents   fabric   go1.17.3.linux-amd64.tar.gz.1  roledice  thanvir
+Downloads   fi.java  Music                          rolldice  Videos
+sce251127@RV-ML2-UBU:~$ cd rolldice
+sce251127@RV-ML2-UBU:~/rolldice$ code.
+Command 'code.' not found, did you mean:
+  command 'coder' from snap coder (2.21.3)
+  command 'code' from snap code (17baf841)
+See 'snap info <snapname>' for additional versions.
+sce251127@RV-ML2-UBU:~/rolldice$ code .
+sce251127@RV-ML2-UBU:~/rolldice$ truffle init
+
+✔ Preparing to download
+✔ Downloading
+✔ Cleaning up temporary files
+✔ Setting up box
+
+Unbox successful. Sweet!
+
+Commands:
+
+  Compile:        truffle compile
+  Migrate:        truffle migrate
+  Test contracts: truffle test
+
+sce251127@RV-ML2-UBU:~/rolldice$ truffle complie
+Compiling ./contracts/Migrations.sol...
+Compiling ./contracts/dicegame.sol...
+Writing artifacts to ./build/contracts
+
+sce251127@RV-ML2-UBU:~/rolldice$ truffle complie
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle compile
+[sudo] password for sce251127: 
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle migrate
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'ganache'
+> Network id:      5777
+> Block gas limit: 6721975
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x6df72257950c2610331c962a662d9092c429e6f5f9df4a045ce4fd7c6be92200
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x3c500B1AA749f40E027cC1BB255f9761E6815d37
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.99584198
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.00415802 ETH
+
+sce251127@RV-ML2-UBU:~/rolldice$ truffle develop
+Truffle Develop started at http://127.0.0.1:9545/
+
+Accounts:
+(0) 0xf8a2de0486234024e95d51f04fb98bb06be54195
+(1) 0x41119825297bd9fc4a5e44ea7b9e3f63fd9c818c
+(2) 0x8149e5c104e4c1a6b994860589ac8292117ac598
+(3) 0x4ea8a5e3b71311bc3a257999b96276aa97147a50
+(4) 0xa70093afd5a8af91757eaad02059e3a65586cce8
+(5) 0x46d2c3ea2ef09063025fd1662ef884c842c565a0
+(6) 0xe88e63b3ac2b644708a27b778e7fa59a31e642c3
+(7) 0xf8a4114c91cdada675fb96f9670fa7aa7d5b4e7e
+(8) 0x4869f37c3134e9432738cd9ac086c82ff341ce91
+(9) 0x2ac9ad45ecdbdc4d722e3c21e7266ec9b89c270f
+
+Private Keys:
+(0) ef26d20624206ee6d5cbd24a8c476733b8f805f4e7a0ffeeaf23bef43e59c71d
+(1) 2ec583bae5e7b22c11a2ccab48bb91456041c13e14aab4496baa47dc5c4de4e2
+(2) 30a9c98f8655a74291c3ff967dad117a3cb2d373a7f7a026259fb5d02e750201
+(3) 6461ad15464e0745baef83e2f0caf836f00922d59263b31b3aa659faea34458b
+(4) 86e0b542067dccfec99de775969d65acae5788275d3e0e36d364a1198525bc9f
+(5) 83490ff40091045240fe3891c594aef4c98b38a8869e7fa7b168ed4c1d1a58b6
+(6) 175564dea31eda3d58eb7453b932b516383a36639de350a967b6b3f618418f1e
+(7) 83a85343363d3af04a837baded1a13936dbc7e7df06c4619df64ddfb601e1aec
+(8) 863982e522dbd1b69abf6ae07e290d5ff99232256c5525ff8651df8e65a6baa2
+(9) 376d9d237defb655eb0036c7acf64cda1a5019a5f4903d6d7af4e98f6081c8ac
+
+Mnemonic: illegal edit increase capital major orchard derive peasant frequent limit plate release
+
+⚠️  Important ⚠️  : This mnemonic was created for you by Truffle. It is not secure.
+Ensure you do not use it on production blockchains, or else you risk losing funds.
+
+truffle(develop)> 
+sce251127@RV-ML2-UBU:~/rolldice$ truffle console
+truffle(ganache)> const dice = await Dice
+undefined
+truffle(ganache)> 
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle migrate
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'development'
+> Network id:      5777
+> Block gas limit: 6721975
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0xfab6de29825ea68bbcf42d41d7b54a8be4b17bc8da0ab7b1e7199e73793d7d9d
+   > Blocks: 0            Seconds: 0
+   > contract address:    0xE254eaDFc5786b4666Bf28B154e63C8d5C1eA3ed
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.99168396
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.00415802 ETH
+
+sce251127@RV-ML2-UBU:~/rolldice$ truffle console
+truffle(development)> const dice = await Dice.deploy
+undefined
+truffle(development)> const dice = await Dice.deploy
+evalmachine.<anonymous>:1
+const dice = global.__await_outside_result; void delete global.__await_outside_result;
+^
+
+Uncaught SyntaxError: Identifier 'dice' has already been declared
+truffle(development)> 
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle compile
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle migrate
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'development'
+> Network id:      5777
+> Block gas limit: 6721975
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x3d17d3b8313f6ae0eefd0fcf72513561a989ebe55ba3370b25b3079407574749
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x84B7cBCfD7c99Fd381793E3aE3d52FDC09f1A440
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.98752594
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+2_dice.js
+=========
+
+   Deploying 'Dice'
+   ----------------
+   > transaction hash:    0xb7f6b1c1bf69ec9b7ff07a213166d96b9d9cbc00b3c94e25f8aab7009330aaf1
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x0827B38f804f534B1dd655381450A4c2BbA27d22
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.97726408
+   > gas used:            513093
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01026186 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.01026186 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.01441988 ETH
+
+sce251127@RV-ML2-UBU:~/rolldice$ truffle console
+truffle(development)> const dice = await Dice.deployed()
+undefined
+truffle(development)> await dice.    function getNewbet() public returns (uint8) {
+Uncaught TypeError: Cannot read property 'match' of undefined
+    at ReadStream.onData (readline.js:1137:36)
+    at emitKeys.next (<anonymous>)
+    at emitKeys (internal/readline/utils.js:335:14)
+    at ReadStream.EventEmitter.emit (domain.js:483:12)
+    at ReadStream.emit (events.js:314:20)
+    at ReadStream.onkeypress (readline.js:205:10)
+    at REPLServer.self._ttyWrite (repl.js:867:9)
+    at REPLServer.Interface._ttyWrite (readline.js:1003:14)
+    at REPLServer.Interface._line (readline.js:658:8)
+    at REPLServer.Interface._onLine (readline.js:329:10)
+    at REPLServer.EventEmitter.emit (domain.js:483:12)
+    at REPLServer.emit (events.js:314:20)
+    at REPLServer.onLine (repl.js:777:10)
+    at REPLServer.runBound [as eval] (domain.js:440:12)
+    at bound (domain.js:427:14)
+    at ReplManager.interpret (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/lib/repl.js:118:1)
+    at Console.interpret (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/lib/console.js:138:1)
+    at Command.getCommand (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/lib/command.js:21:1)
+    at Object.Yargs.self.parse (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/~/yargs/yargs.js:532:1)
+    at Object.Yargs.self._parseArgs (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/~/yargs/yargs.js:938:1)
+    at Function.Parser.detailed (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/~/yargs-parser/index.js:761:1)
+    at parse (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/~/yargs-parser/index.js:125:1)
+truffle(development)> 
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle migrate
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'development'
+> Network id:      5777
+> Block gas limit: 6721975
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x9f67e2d6e9cefc1891aff694eff1a1429e6a1cc9984f32157625432f372eea68
+   > Blocks: 0            Seconds: 0
+   > contract address:    0xc8739406154bcf5C15F43De3e5be44f9665912CB
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.97310606
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+2_dice.js
+=========
+
+   Replacing 'Dice'
+   ----------------
+   > transaction hash:    0x0c268ce0b30c9dd5fcfd7849bd0f732e7e7fb2cd0e30e264a3ee3652bc6ebabd
+   > Blocks: 0            Seconds: 0
+   > contract address:    0xC3E501a540aDcD3dfA3A0aA31308e3B3c24EeE50
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.9628442
+   > gas used:            513093
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01026186 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.01026186 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.01441988 ETH
+
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle compile
+sce251127@RV-ML2-UBU:~/rolldice$ sudo truffle migrate
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'development'
+> Network id:      5777
+> Block gas limit: 6721975
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x14a07d5d83834e583538a49ec2a333f34e4ea20174c771c0c2d88564936a6a7e
+   > Blocks: 0            Seconds: 0
+   > contract address:    0xfc0f39add0C42E2E33B312c587fbD048543D6612
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.95868618
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+2_dice.js
+=========
+
+   Replacing 'Dice'
+   ----------------
+   > transaction hash:    0x1e42fe0b442eede3473c8d970072cd12cbf4b24146d926c91828505ec3b70e4e
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x73521b6116A2853E18c774A14a1d6962A9dE8418
+   > account:             0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E
+   > balance:             99.94842432
+   > gas used:            513093
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01026186 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.01026186 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.01441988 ETH
+
+sce251127@RV-ML2-UBU:~/rolldice$ truffle console
+truffle(development)> const myinstance = await Dice.deployed()
+undefined
+truffle(development)> console.log myinstance
+evalmachine.<anonymous>:0
+console.log myinstance
+            ^^^^^^^^^^
+
+Uncaught SyntaxError: Unexpected identifier
+truffle(development)> console.log(myinstance)
+TruffleContract {
+  constructor: [Function: TruffleContract] {
+    _constructorMethods: {
+      setProvider: [Function: setProvider],
+      new: [Function: new],
+      at: [Function: at],
+      deployed: [Function: deployed],
+      defaults: [Function: defaults],
+      hasNetwork: [Function: hasNetwork],
+      isDeployed: [Function: isDeployed],
+      detectNetwork: [Function: detectNetwork],
+      setNetwork: [Function: setNetwork],
+      setWallet: [Function: setWallet],
+      resetAddress: [Function: resetAddress],
+      link: [Function: link],
+      clone: [Function: clone],
+      addProp: [Function: addProp],
+      toJSON: [Function: toJSON],
+      decodeLogs: [Function: decodeLogs]
+    },
+    _properties: {
+      contract_name: [Object],
+      contractName: [Object],
+      gasMultiplier: [Object],
+      timeoutBlocks: [Object],
+      autoGas: [Object],
+      numberFormat: [Object],
+      abi: [Object],
+      network: [Function: network],
+      networks: [Function: networks],
+      address: [Object],
+      transactionHash: [Object],
+      links: [Function: links],
+      events: [Function: events],
+      binary: [Function: binary],
+      deployedBinary: [Function: deployedBinary],
+      unlinked_binary: [Object],
+      bytecode: [Object],
+      deployedBytecode: [Object],
+      sourceMap: [Object],
+      deployedSourceMap: [Object],
+      source: [Object],
+      sourcePath: [Object],
+      legacyAST: [Object],
+      ast: [Object],
+      compiler: [Object],
+      schema_version: [Function: schema_version],
+      schemaVersion: [Function: schemaVersion],
+      updated_at: [Function: updated_at],
+      updatedAt: [Function: updatedAt],
+      userdoc: [Function: userdoc],
+      devdoc: [Function: devdoc]
+    },
+    _property_values: {},
+    _json: {
+      contractName: 'Dice',
+      abi: [Array],
+      bytecode: '0x608060405234801561001057600080fd5b5061085b806100206000396000f3fe608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631ae651c8146100645780636f9fb98a14610093578063cd5e3c5d146100be578063e9b903f41461012f575b005b34801561007057600080fd5b50610079610160565b604051808215151515815260200191505060405180910390f35b34801561009f57600080fd5b506100a86101b6565b6040518082815260200191505060405180910390f35b3480156100ca57600080fd5b506100d36101d5565b604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018360ff1660ff1681526020018260ff1660ff168152602001935050505060405180910390f35b34801561013b57600080fd5b5061014461059c565b604051808260ff1660ff16815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16905090565b60003073ffffffffffffffffffffffffffffffffffffffff1631905090565b60008060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151561029d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600b8152602001807f426574206e6f742073657400000000000000000000000000000000000000000081525060200191505060405180910390fd5b60006102a76107aa565b9050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160026101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff16021790555060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff0219169083151502179055506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1660ff168160ff16141561048c576000655af3107a40009050803073ffffffffffffffffffffffffffffffffffffffff163110151515610480576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f496e73756666696369656e7420636f6e74726163742062616c616e636500000081525060200191505060405180910390fd5b61048a33826107e4565b505b3373ffffffffffffffffffffffffffffffffffffffff167ff2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1683604051808360ff1660ff1681526020018260ff1660ff1681526020019250505060405180910390a2336000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff168282925093509350935050909192565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151515610662576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600f8152602001807f42657420616c726561647920736574000000000000000000000000000000000081525060200191505060405180910390fd5b600061066c6107aa565b905060016000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff021916908315150217905550806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160006101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff1602179055503373ffffffffffffffffffffffffffffffffffffffff167f1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b1282604051808260ff1660ff16815260200191505060405180910390a28091505090565b600080600160009054906101000a900460ff1660ff16426001430340600190040101905060016006828115156107dc57fe5b060191505090565b8173ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f1935050505015801561082a573d6000803e3d6000fd5b50505056fea165627a7a723058206d6123a64edbb0337cd0d1030686e57a64263fe6350df14d1d185b3ffacf77910029',
+      deployedBytecode: '0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631ae651c8146100645780636f9fb98a14610093578063cd5e3c5d146100be578063e9b903f41461012f575b005b34801561007057600080fd5b50610079610160565b604051808215151515815260200191505060405180910390f35b34801561009f57600080fd5b506100a86101b6565b6040518082815260200191505060405180910390f35b3480156100ca57600080fd5b506100d36101d5565b604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018360ff1660ff1681526020018260ff1660ff168152602001935050505060405180910390f35b34801561013b57600080fd5b5061014461059c565b604051808260ff1660ff16815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16905090565b60003073ffffffffffffffffffffffffffffffffffffffff1631905090565b60008060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151561029d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600b8152602001807f426574206e6f742073657400000000000000000000000000000000000000000081525060200191505060405180910390fd5b60006102a76107aa565b9050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160026101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff16021790555060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff0219169083151502179055506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1660ff168160ff16141561048c576000655af3107a40009050803073ffffffffffffffffffffffffffffffffffffffff163110151515610480576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f496e73756666696369656e7420636f6e74726163742062616c616e636500000081525060200191505060405180910390fd5b61048a33826107e4565b505b3373ffffffffffffffffffffffffffffffffffffffff167ff2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1683604051808360ff1660ff1681526020018260ff1660ff1681526020019250505060405180910390a2336000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff168282925093509350935050909192565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151515610662576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600f8152602001807f42657420616c726561647920736574000000000000000000000000000000000081525060200191505060405180910390fd5b600061066c6107aa565b905060016000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff021916908315150217905550806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160006101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff1602179055503373ffffffffffffffffffffffffffffffffffffffff167f1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b1282604051808260ff1660ff16815260200191505060405180910390a28091505090565b600080600160009054906101000a900460ff1660ff16426001430340600190040101905060016006828115156107dc57fe5b060191505090565b8173ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f1935050505015801561082a573d6000803e3d6000fd5b50505056fea165627a7a723058206d6123a64edbb0337cd0d1030686e57a64263fe6350df14d1d185b3ffacf77910029',
+      sourceMap: '59:2196:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;59:2196:1;;;;;;;',
+      deployedSourceMap: '59:2196:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1536:96;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1536:96:1;;;;;;;;;;;;;;;;;;;;;;;;;;;2148:105;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2148:105:1;;;;;;;;;;;;;;;;;;;;;;;794:707;;8:9:-1;5:2;;;30:1;27;20:12;5:2;794:707:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;418:322;;8:9:-1;5:2;;;30:1;27;20:12;5:2;418:322:1;;;;;;;;;;;;;;;;;;;;;;;;;;;1536:96;1577:4;1600;:16;1605:10;1600:16;;;;;;;;;;;;;;;:25;;;;;;;;;;;;1593:32;;1536:96;:::o;2148:105::-;2199:7;2233:4;2225:21;;;2218:28;;2148:105;:::o;794:707::-;826:7;835:5;842;867:4;:16;872:10;867:16;;;;;;;;;;;;;;;:25;;;;;;;;;;;;859:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;918:13;934:8;:6;:8::i;:::-;918:24;;979:7;952:4;:16;957:10;952:16;;;;;;;;;;;;;;;:24;;;:34;;;;;;;;;;;;;;;;;;1012:7;996:12;;:23;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1057:5;1029:4;:16;1034:10;1029:16;;;;;;;;;;;;;;;:25;;;:33;;;;;;;;;;;;;;;;;;1133:4;:16;1138:10;1133:16;;;;;;;;;;;;;;;:27;;;;;;;;;;;;1122:38;;:7;:38;;;1118:234;;;1176:14;1193:12;1176:29;;1252:6;1235:4;1227:21;;;:31;;1219:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1306:35;1322:10;1334:6;1306:15;:35::i;:::-;1118:234;;1378:10;1367:60;;;1390:4;:16;1395:10;1390:16;;;;;;;;;;;;;;;:27;;;;;;;;;;;;1419:7;1367:60;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1445:10;1457:4;:16;1462:10;1457:16;;;;;;;;;;;;;;;:27;;;;;;;;;;;;1486:7;1437:57;;;;;;;;;;794:707;;;:::o;418:322::-;455:5;481:4;:16;486:10;481:16;;;;;;;;;;;;;;;:25;;;;;;;;;;;;480:26;472:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;536:9;548:8;:6;:8::i;:::-;536:20;;594:4;566;:16;571:10;566:16;;;;;;;;;;;;;;;:25;;;:32;;;;;;;;;;;;;;;;;;638:3;608:4;:16;613:10;608:16;;;;;;;;;;;;;;;:27;;;:33;;;;;;;;;;;;;;;;;;667:3;651:12;;:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;697:10;685:28;;;709:3;685:28;;;;;;;;;;;;;;;;;;;;;;730:3;723:10;;;418:322;:::o;1684:186::-;1724:5;1741:18;1807:12;;;;;;;;;;;1762:57;;1801:3;1795:1;1780:12;:16;1770:27;1762:36;;;:42;:57;1741:78;;1861:1;1856;1843:10;:14;;;;;;;;1842:20;1829:34;;;1684:186;:::o;1935:123::-;2026:6;2010:33;;:41;2044:6;2010:41;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2010:41:1;1935:123;;:::o',
+      source: '\n' +
+        '\n' +
+        '// SPDX-License-Identifier: MIT\n' +
+        'pragma solidity ^0.5.0;\n' +
+        '\n' +
+        'contract Dice {\n' +
+        '    struct Bet {\n' +
+        '        uint8 currentBet;\n' +
+        '        bool isBetSet;\n' +
+        '        uint8 destiny;\n' +
+        '    }\n' +
+        '\n' +
+        '    mapping(address => Bet) private bets;\n' +
+        '    uint8 private randomFactor;\n' +
+        '\n' +
+        '    event NewBetIsSet(address indexed bidder, uint8 currentBet);\n' +
+        '    event GameResult(address indexed bidder, uint8 currentBet, uint8 destiny);\n' +
+        '\n' +
+        '    // Start a new bet\n' +
+        '    function getNewbet() public returns (uint8) {\n' +
+        '        require(!bets[msg.sender].isBetSet, "Bet already set");\n' +
+        '        uint8 bet = random();\n' +
+        '        bets[msg.sender].isBetSet = true;\n' +
+        '        bets[msg.sender].currentBet = bet;\n' +
+        '        randomFactor += bet;\n' +
+        '        emit NewBetIsSet(msg.sender, bet);\n' +
+        '        return bet;\n' +
+        '    }\n' +
+        '\n' +
+        '    // Roll the dice and check if the user wins\n' +
+        '    function roll() public returns (address, uint8, uint8) {\n' +
+        '        require(bets[msg.sender].isBetSet, "Bet not set");\n' +
+        '        uint8 destiny = random();\n' +
+        '        bets[msg.sender].destiny = destiny;\n' +
+        '        randomFactor += destiny;\n' +
+        '        bets[msg.sender].isBetSet = false;\n' +
+        '\n' +
+        '        // Check for win and transfer reward\n' +
+        '        if (destiny == bets[msg.sender].currentBet) {\n' +
+        '            uint256 reward = 0.0001 ether;\n' +
+        '            require(address(this).balance >= reward, "Insufficient contract balance");\n' +
+        '            _transferReward(msg.sender, reward);\n' +
+        '        }\n' +
+        '\n' +
+        '        emit GameResult(msg.sender, bets[msg.sender].currentBet, destiny);\n' +
+        '        return (msg.sender, bets[msg.sender].currentBet, destiny);\n' +
+        '    }\n' +
+        '\n' +
+        '    // Check if a bet is set\n' +
+        '    function isBetSet() public view returns (bool) {\n' +
+        '        return bets[msg.sender].isBetSet;\n' +
+        '    }\n' +
+        '\n' +
+        '    // Generate a random number (from 1 to 6)\n' +
+        '    function random() private view returns (uint8) {\n' +
+        '        uint256 blockValue = uint256(blockhash(block.number - 1)) + now + randomFactor;\n' +
+        '        return uint8((blockValue % 6) + 1);\n' +
+        '    }\n' +
+        '\n' +
+        '    // Transfer reward to the winner (Solidity 0.5 syntax)\n' +
+        '    function _transferReward(address winner, uint256 amount) private {\n' +
+        '        address(uint160(winner)).transfer(amount);\n' +
+        '    }\n' +
+        '\n' +
+        '    // Accept ether\n' +
+        '    function() external payable {}\n' +
+        '\n' +
+        '    // Get contract balance\n' +
+        '    function getContractBalance() public view returns (uint256) {\n' +
+        '        return address(this).balance;\n' +
+        '    }\n' +
+        '}\n',
+      sourcePath: '/home/sce251127/rolldice/contracts/dicegame.sol',
+      ast: [Object],
+      legacyAST: [Object],
+      compiler: [Object],
+      networks: [Object],
+      schemaVersion: '3.0.2',
+      updatedAt: '2025-05-02T06:29:44.249Z',
+      devdoc: [Object],
+      userdoc: [Object]
+    },
+    setProvider: [Function: bound setProvider],
+    new: [Function: bound new] {
+      estimateGas: [Function: bound estimateDeployment]
+    },
+    at: [Function: bound at],
+    deployed: [Function: bound deployed],
+    defaults: [Function: bound defaults],
+    hasNetwork: [Function: bound hasNetwork],
+    isDeployed: [Function: bound isDeployed],
+    detectNetwork: [Function: bound detectNetwork],
+    setNetwork: [Function: bound setNetwork],
+    setWallet: [Function: bound setWallet],
+    resetAddress: [Function: bound resetAddress],
+    link: [Function: bound link],
+    clone: [Function: bound clone],
+    addProp: [Function: bound addProp],
+    toJSON: [Function: bound toJSON],
+    decodeLogs: [Function: bound decodeLogs],
+    web3: Web3 {
+      currentProvider: [Getter/Setter],
+      _requestManager: [RequestManager],
+      givenProvider: null,
+      providers: [Object],
+      _provider: [HttpProvider],
+      setProvider: [Function],
+      BatchRequest: [Function: bound Batch],
+      extend: [Function],
+      version: '1.0.0-beta.37',
+      utils: [Object],
+      eth: [Eth],
+      shh: [Shh],
+      bzz: [Bzz]
+    },
+    class_defaults: {
+      from: '0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E',
+      gas: 6721975,
+      gasPrice: 20000000000
+    },
+    currentProvider: HttpProvider {
+      host: 'http://127.0.0.1:7545',
+      httpAgent: [Agent],
+      timeout: 0,
+      headers: undefined,
+      connected: true,
+      send: [Function],
+      _alreadyWrapped: true
+    },
+    network_id: '5777'
+  },
+  methods: {
+    'getNewbet()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    },
+    'roll()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    },
+    'isBetSet()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    },
+    'getContractBalance()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    }
+  },
+  abi: [
+    {
+      payable: true,
+      stateMutability: 'payable',
+      type: 'fallback',
+      constant: undefined
+    },
+    {
+      anonymous: false,
+      inputs: [Array],
+      name: 'NewBetIsSet',
+      type: 'event',
+      signature: '0x1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b12',
+      constant: undefined,
+      payable: undefined
+    },
+    {
+      anonymous: false,
+      inputs: [Array],
+      name: 'GameResult',
+      type: 'event',
+      signature: '0xf2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d',
+      constant: undefined,
+      payable: undefined
+    },
+    {
+      constant: false,
+      inputs: [],
+      name: 'getNewbet',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'nonpayable',
+      type: 'function',
+      signature: '0xe9b903f4'
+    },
+    {
+      constant: false,
+      inputs: [],
+      name: 'roll',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'nonpayable',
+      type: 'function',
+      signature: '0xcd5e3c5d'
+    },
+    {
+      constant: true,
+      inputs: [],
+      name: 'isBetSet',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'view',
+      type: 'function',
+      signature: '0x1ae651c8'
+    },
+    {
+      constant: true,
+      inputs: [],
+      name: 'getContractBalance',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'view',
+      type: 'function',
+      signature: '0x6f9fb98a'
+    }
+  ],
+  address: '0x73521b6116A2853E18c774A14a1d6962A9dE8418',
+  transactionHash: undefined,
+  contract: Contract {
+    currentProvider: [Getter/Setter],
+    _requestManager: RequestManager {
+      provider: [HttpProvider],
+      providers: [Object],
+      subscriptions: {}
+    },
+    givenProvider: null,
+    providers: {
+      WebsocketProvider: [Function: WebsocketProvider],
+      HttpProvider: [Function: HttpProvider],
+      IpcProvider: [Function: IpcProvider]
+    },
+    _provider: HttpProvider {
+      host: 'http://127.0.0.1:7545',
+      httpAgent: [Agent],
+      timeout: 0,
+      headers: undefined,
+      connected: true,
+      send: [Function],
+      _alreadyWrapped: true
+    },
+    setProvider: [Function],
+    BatchRequest: [Function: bound Batch],
+    extend: [Function: ex] {
+      formatters: [Object],
+      utils: [Object],
+      Method: [Function: Method]
+    },
+    clearSubscriptions: [Function],
+    options: { address: [Getter/Setter], jsonInterface: [Getter/Setter] },
+    defaultAccount: [Getter/Setter],
+    defaultBlock: [Getter/Setter],
+    methods: {
+      getNewbet: [Function: bound _createTxObject],
+      '0xe9b903f4': [Function: bound _createTxObject],
+      'getNewbet()': [Function: bound _createTxObject],
+      roll: [Function: bound _createTxObject],
+      '0xcd5e3c5d': [Function: bound _createTxObject],
+      'roll()': [Function: bound _createTxObject],
+      isBetSet: [Function: bound _createTxObject],
+      '0x1ae651c8': [Function: bound _createTxObject],
+      'isBetSet()': [Function: bound _createTxObject],
+      getContractBalance: [Function: bound _createTxObject],
+      '0x6f9fb98a': [Function: bound _createTxObject],
+      'getContractBalance()': [Function: bound _createTxObject]
+    },
+    events: {
+      NewBetIsSet: [Function: bound ],
+      '0x1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b12': [Function: bound ],
+      'NewBetIsSet(address,uint8)': [Function: bound ],
+      GameResult: [Function: bound ],
+      '0xf2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d': [Function: bound ],
+      'GameResult(address,uint8,uint8)': [Function: bound ],
+      allEvents: [Function: bound ]
+    },
+    _address: '0x73521b6116A2853E18c774A14a1d6962A9dE8418',
+    _jsonInterface: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ]
+  },
+  NewBetIsSet: [Function],
+  GameResult: [Function],
+  getNewbet: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  roll: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  isBetSet: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  getContractBalance: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  sendTransaction: [Function],
+  send: [Function],
+  allEvents: [Function],
+  getPastEvents: [Function]
+}
+undefined
+truffle(development)> 
+sce251127@RV-ML2-UBU:~/rolldice$ truffle console
+truffle(development)> const dice = await Dice.deployed()
+undefined
+truffle(development)> await web3.eth.sendTransaction({ from: accounts[0], to: dice.address, value: web3.utils.toWei("1", "ether") })
+Uncaught ReferenceError: accounts is not defined
+    at evalmachine.<anonymous>:1:40
+truffle(development)> const accounts = await web3.eth.getAccounts()
+undefined
+truffle(development)> console.log(accounts)
+[
+  '0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E',
+  '0x1dE9d087446392d088aA7266Cde413C17bcF81e9',
+  '0xa8529488b771d695119c8101d6fd2c4Bdf460b8B',
+  '0x364590605Fd5Dfa8650b620f0c123330058fc1a7',
+  '0xcDC94B6263A3900C22a542a623CBBab66f9c584B',
+  '0x8991303CC2d3e1D7F598c0Dc54082C4E96133104',
+  '0x66097c73032Bfe72c178eDb6EA554C476BD882Fd',
+  '0x6d166c23A3322c015Fed23a1aBA9a9F4fBa30367',
+  '0xEa7dF2C04C1F2b46Dd0b0995b62d5f69c2cCDCd6',
+  '0x64FeE3dc4eF20B9a2A80e11A12F7d2dE51538247'
+]
+undefined
+truffle(development)> console.log(acccounts[1]))
+evalmachine.<anonymous>:0
+console.log(acccounts[1]))
+                         ^
+
+Uncaught SyntaxError: Unexpected token ')'
+truffle(development)> console.log(acccounts[1])
+evalmachine.<anonymous>:0
+console.log(acccounts[1])
+            ^
+
+Uncaught ReferenceError: acccounts is not defined
+    at evalmachine.<anonymous>:0:13
+    at Script.runInContext (vm.js:130:18)
+    at runScript (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/lib/console.js:199:1)
+    at Console.interpret (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/lib/console.js:213:1)
+    at ReplManager.interpret (/usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-core/lib/repl.js:118:1)
+    at bound (domain.js:427:14)
+    at REPLServer.runBound [as eval] (domain.js:440:12)
+    at REPLServer.onLine (repl.js:777:10)
+    at REPLServer.emit (events.js:314:20)
+    at REPLServer.EventEmitter.emit (domain.js:483:12)
+truffle(development)> console.log(accounts[1])
+0x1dE9d087446392d088aA7266Cde413C17bcF81e9
+undefined
+truffle(development)> const myinstance = await Dice.deployed()
+undefined
+truffle(development)> console.log(myinstance)
+TruffleContract {
+  constructor: [Function: TruffleContract] {
+    _constructorMethods: {
+      setProvider: [Function: setProvider],
+      new: [Function: new],
+      at: [Function: at],
+      deployed: [Function: deployed],
+      defaults: [Function: defaults],
+      hasNetwork: [Function: hasNetwork],
+      isDeployed: [Function: isDeployed],
+      detectNetwork: [Function: detectNetwork],
+      setNetwork: [Function: setNetwork],
+      setWallet: [Function: setWallet],
+      resetAddress: [Function: resetAddress],
+      link: [Function: link],
+      clone: [Function: clone],
+      addProp: [Function: addProp],
+      toJSON: [Function: toJSON],
+      decodeLogs: [Function: decodeLogs]
+    },
+    _properties: {
+      contract_name: [Object],
+      contractName: [Object],
+      gasMultiplier: [Object],
+      timeoutBlocks: [Object],
+      autoGas: [Object],
+      numberFormat: [Object],
+      abi: [Object],
+      network: [Function: network],
+      networks: [Function: networks],
+      address: [Object],
+      transactionHash: [Object],
+      links: [Function: links],
+      events: [Function: events],
+      binary: [Function: binary],
+      deployedBinary: [Function: deployedBinary],
+      unlinked_binary: [Object],
+      bytecode: [Object],
+      deployedBytecode: [Object],
+      sourceMap: [Object],
+      deployedSourceMap: [Object],
+      source: [Object],
+      sourcePath: [Object],
+      legacyAST: [Object],
+      ast: [Object],
+      compiler: [Object],
+      schema_version: [Function: schema_version],
+      schemaVersion: [Function: schemaVersion],
+      updated_at: [Function: updated_at],
+      updatedAt: [Function: updatedAt],
+      userdoc: [Function: userdoc],
+      devdoc: [Function: devdoc]
+    },
+    _property_values: {},
+    _json: {
+      contractName: 'Dice',
+      abi: [Array],
+      bytecode: '0x608060405234801561001057600080fd5b5061085b806100206000396000f3fe608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631ae651c8146100645780636f9fb98a14610093578063cd5e3c5d146100be578063e9b903f41461012f575b005b34801561007057600080fd5b50610079610160565b604051808215151515815260200191505060405180910390f35b34801561009f57600080fd5b506100a86101b6565b6040518082815260200191505060405180910390f35b3480156100ca57600080fd5b506100d36101d5565b604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018360ff1660ff1681526020018260ff1660ff168152602001935050505060405180910390f35b34801561013b57600080fd5b5061014461059c565b604051808260ff1660ff16815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16905090565b60003073ffffffffffffffffffffffffffffffffffffffff1631905090565b60008060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151561029d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600b8152602001807f426574206e6f742073657400000000000000000000000000000000000000000081525060200191505060405180910390fd5b60006102a76107aa565b9050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160026101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff16021790555060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff0219169083151502179055506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1660ff168160ff16141561048c576000655af3107a40009050803073ffffffffffffffffffffffffffffffffffffffff163110151515610480576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f496e73756666696369656e7420636f6e74726163742062616c616e636500000081525060200191505060405180910390fd5b61048a33826107e4565b505b3373ffffffffffffffffffffffffffffffffffffffff167ff2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1683604051808360ff1660ff1681526020018260ff1660ff1681526020019250505060405180910390a2336000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff168282925093509350935050909192565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151515610662576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600f8152602001807f42657420616c726561647920736574000000000000000000000000000000000081525060200191505060405180910390fd5b600061066c6107aa565b905060016000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff021916908315150217905550806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160006101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff1602179055503373ffffffffffffffffffffffffffffffffffffffff167f1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b1282604051808260ff1660ff16815260200191505060405180910390a28091505090565b600080600160009054906101000a900460ff1660ff16426001430340600190040101905060016006828115156107dc57fe5b060191505090565b8173ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f1935050505015801561082a573d6000803e3d6000fd5b50505056fea165627a7a723058206d6123a64edbb0337cd0d1030686e57a64263fe6350df14d1d185b3ffacf77910029',
+      deployedBytecode: '0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631ae651c8146100645780636f9fb98a14610093578063cd5e3c5d146100be578063e9b903f41461012f575b005b34801561007057600080fd5b50610079610160565b604051808215151515815260200191505060405180910390f35b34801561009f57600080fd5b506100a86101b6565b6040518082815260200191505060405180910390f35b3480156100ca57600080fd5b506100d36101d5565b604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018360ff1660ff1681526020018260ff1660ff168152602001935050505060405180910390f35b34801561013b57600080fd5b5061014461059c565b604051808260ff1660ff16815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16905090565b60003073ffffffffffffffffffffffffffffffffffffffff1631905090565b60008060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151561029d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600b8152602001807f426574206e6f742073657400000000000000000000000000000000000000000081525060200191505060405180910390fd5b60006102a76107aa565b9050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160026101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff16021790555060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff0219169083151502179055506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1660ff168160ff16141561048c576000655af3107a40009050803073ffffffffffffffffffffffffffffffffffffffff163110151515610480576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f496e73756666696369656e7420636f6e74726163742062616c616e636500000081525060200191505060405180910390fd5b61048a33826107e4565b505b3373ffffffffffffffffffffffffffffffffffffffff167ff2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff1683604051808360ff1660ff1681526020018260ff1660ff1681526020019250505060405180910390a2336000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160009054906101000a900460ff168282925093509350935050909192565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160019054906101000a900460ff16151515610662576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600f8152602001807f42657420616c726561647920736574000000000000000000000000000000000081525060200191505060405180910390fd5b600061066c6107aa565b905060016000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160016101000a81548160ff021916908315150217905550806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160006101000a81548160ff021916908360ff16021790555080600160008282829054906101000a900460ff160192506101000a81548160ff021916908360ff1602179055503373ffffffffffffffffffffffffffffffffffffffff167f1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b1282604051808260ff1660ff16815260200191505060405180910390a28091505090565b600080600160009054906101000a900460ff1660ff16426001430340600190040101905060016006828115156107dc57fe5b060191505090565b8173ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f1935050505015801561082a573d6000803e3d6000fd5b50505056fea165627a7a723058206d6123a64edbb0337cd0d1030686e57a64263fe6350df14d1d185b3ffacf77910029',
+      sourceMap: '59:2196:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;59:2196:1;;;;;;;',
+      deployedSourceMap: '59:2196:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1536:96;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1536:96:1;;;;;;;;;;;;;;;;;;;;;;;;;;;2148:105;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2148:105:1;;;;;;;;;;;;;;;;;;;;;;;794:707;;8:9:-1;5:2;;;30:1;27;20:12;5:2;794:707:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;418:322;;8:9:-1;5:2;;;30:1;27;20:12;5:2;418:322:1;;;;;;;;;;;;;;;;;;;;;;;;;;;1536:96;1577:4;1600;:16;1605:10;1600:16;;;;;;;;;;;;;;;:25;;;;;;;;;;;;1593:32;;1536:96;:::o;2148:105::-;2199:7;2233:4;2225:21;;;2218:28;;2148:105;:::o;794:707::-;826:7;835:5;842;867:4;:16;872:10;867:16;;;;;;;;;;;;;;;:25;;;;;;;;;;;;859:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;918:13;934:8;:6;:8::i;:::-;918:24;;979:7;952:4;:16;957:10;952:16;;;;;;;;;;;;;;;:24;;;:34;;;;;;;;;;;;;;;;;;1012:7;996:12;;:23;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1057:5;1029:4;:16;1034:10;1029:16;;;;;;;;;;;;;;;:25;;;:33;;;;;;;;;;;;;;;;;;1133:4;:16;1138:10;1133:16;;;;;;;;;;;;;;;:27;;;;;;;;;;;;1122:38;;:7;:38;;;1118:234;;;1176:14;1193:12;1176:29;;1252:6;1235:4;1227:21;;;:31;;1219:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1306:35;1322:10;1334:6;1306:15;:35::i;:::-;1118:234;;1378:10;1367:60;;;1390:4;:16;1395:10;1390:16;;;;;;;;;;;;;;;:27;;;;;;;;;;;;1419:7;1367:60;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1445:10;1457:4;:16;1462:10;1457:16;;;;;;;;;;;;;;;:27;;;;;;;;;;;;1486:7;1437:57;;;;;;;;;;794:707;;;:::o;418:322::-;455:5;481:4;:16;486:10;481:16;;;;;;;;;;;;;;;:25;;;;;;;;;;;;480:26;472:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;536:9;548:8;:6;:8::i;:::-;536:20;;594:4;566;:16;571:10;566:16;;;;;;;;;;;;;;;:25;;;:32;;;;;;;;;;;;;;;;;;638:3;608:4;:16;613:10;608:16;;;;;;;;;;;;;;;:27;;;:33;;;;;;;;;;;;;;;;;;667:3;651:12;;:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;697:10;685:28;;;709:3;685:28;;;;;;;;;;;;;;;;;;;;;;730:3;723:10;;;418:322;:::o;1684:186::-;1724:5;1741:18;1807:12;;;;;;;;;;;1762:57;;1801:3;1795:1;1780:12;:16;1770:27;1762:36;;;:42;:57;1741:78;;1861:1;1856;1843:10;:14;;;;;;;;1842:20;1829:34;;;1684:186;:::o;1935:123::-;2026:6;2010:33;;:41;2044:6;2010:41;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2010:41:1;1935:123;;:::o',
+      source: '\n' +
+        '\n' +
+        '// SPDX-License-Identifier: MIT\n' +
+        'pragma solidity ^0.5.0;\n' +
+        '\n' +
+        'contract Dice {\n' +
+        '    struct Bet {\n' +
+        '        uint8 currentBet;\n' +
+        '        bool isBetSet;\n' +
+        '        uint8 destiny;\n' +
+        '    }\n' +
+        '\n' +
+        '    mapping(address => Bet) private bets;\n' +
+        '    uint8 private randomFactor;\n' +
+        '\n' +
+        '    event NewBetIsSet(address indexed bidder, uint8 currentBet);\n' +
+        '    event GameResult(address indexed bidder, uint8 currentBet, uint8 destiny);\n' +
+        '\n' +
+        '    // Start a new bet\n' +
+        '    function getNewbet() public returns (uint8) {\n' +
+        '        require(!bets[msg.sender].isBetSet, "Bet already set");\n' +
+        '        uint8 bet = random();\n' +
+        '        bets[msg.sender].isBetSet = true;\n' +
+        '        bets[msg.sender].currentBet = bet;\n' +
+        '        randomFactor += bet;\n' +
+        '        emit NewBetIsSet(msg.sender, bet);\n' +
+        '        return bet;\n' +
+        '    }\n' +
+        '\n' +
+        '    // Roll the dice and check if the user wins\n' +
+        '    function roll() public returns (address, uint8, uint8) {\n' +
+        '        require(bets[msg.sender].isBetSet, "Bet not set");\n' +
+        '        uint8 destiny = random();\n' +
+        '        bets[msg.sender].destiny = destiny;\n' +
+        '        randomFactor += destiny;\n' +
+        '        bets[msg.sender].isBetSet = false;\n' +
+        '\n' +
+        '        // Check for win and transfer reward\n' +
+        '        if (destiny == bets[msg.sender].currentBet) {\n' +
+        '            uint256 reward = 0.0001 ether;\n' +
+        '            require(address(this).balance >= reward, "Insufficient contract balance");\n' +
+        '            _transferReward(msg.sender, reward);\n' +
+        '        }\n' +
+        '\n' +
+        '        emit GameResult(msg.sender, bets[msg.sender].currentBet, destiny);\n' +
+        '        return (msg.sender, bets[msg.sender].currentBet, destiny);\n' +
+        '    }\n' +
+        '\n' +
+        '    // Check if a bet is set\n' +
+        '    function isBetSet() public view returns (bool) {\n' +
+        '        return bets[msg.sender].isBetSet;\n' +
+        '    }\n' +
+        '\n' +
+        '    // Generate a random number (from 1 to 6)\n' +
+        '    function random() private view returns (uint8) {\n' +
+        '        uint256 blockValue = uint256(blockhash(block.number - 1)) + now + randomFactor;\n' +
+        '        return uint8((blockValue % 6) + 1);\n' +
+        '    }\n' +
+        '\n' +
+        '    // Transfer reward to the winner (Solidity 0.5 syntax)\n' +
+        '    function _transferReward(address winner, uint256 amount) private {\n' +
+        '        address(uint160(winner)).transfer(amount);\n' +
+        '    }\n' +
+        '\n' +
+        '    // Accept ether\n' +
+        '    function() external payable {}\n' +
+        '\n' +
+        '    // Get contract balance\n' +
+        '    function getContractBalance() public view returns (uint256) {\n' +
+        '        return address(this).balance;\n' +
+        '    }\n' +
+        '}\n',
+      sourcePath: '/home/sce251127/rolldice/contracts/dicegame.sol',
+      ast: [Object],
+      legacyAST: [Object],
+      compiler: [Object],
+      networks: [Object],
+      schemaVersion: '3.0.2',
+      updatedAt: '2025-05-02T06:29:44.249Z',
+      devdoc: [Object],
+      userdoc: [Object]
+    },
+    setProvider: [Function: bound setProvider],
+    new: [Function: bound new] {
+      estimateGas: [Function: bound estimateDeployment]
+    },
+    at: [Function: bound at],
+    deployed: [Function: bound deployed],
+    defaults: [Function: bound defaults],
+    hasNetwork: [Function: bound hasNetwork],
+    isDeployed: [Function: bound isDeployed],
+    detectNetwork: [Function: bound detectNetwork],
+    setNetwork: [Function: bound setNetwork],
+    setWallet: [Function: bound setWallet],
+    resetAddress: [Function: bound resetAddress],
+    link: [Function: bound link],
+    clone: [Function: bound clone],
+    addProp: [Function: bound addProp],
+    toJSON: [Function: bound toJSON],
+    decodeLogs: [Function: bound decodeLogs],
+    web3: Web3 {
+      currentProvider: [Getter/Setter],
+      _requestManager: [RequestManager],
+      givenProvider: null,
+      providers: [Object],
+      _provider: [HttpProvider],
+      setProvider: [Function],
+      BatchRequest: [Function: bound Batch],
+      extend: [Function],
+      version: '1.0.0-beta.37',
+      utils: [Object],
+      eth: [Eth],
+      shh: [Shh],
+      bzz: [Bzz]
+    },
+    class_defaults: {
+      from: '0x15689F565D08187f3D2A4Dc4da9023fcd3A63a5E',
+      gas: 6721975,
+      gasPrice: 20000000000
+    },
+    currentProvider: HttpProvider {
+      host: 'http://127.0.0.1:7545',
+      httpAgent: [Agent],
+      timeout: 0,
+      headers: undefined,
+      connected: true,
+      send: [Function],
+      _alreadyWrapped: true
+    },
+    network_id: '5777'
+  },
+  methods: {
+    'getNewbet()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    },
+    'roll()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    },
+    'isBetSet()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    },
+    'getContractBalance()': [Function] {
+      call: [Function],
+      sendTransaction: [Function],
+      estimateGas: [Function],
+      request: [Function]
+    }
+  },
+  abi: [
+    {
+      payable: true,
+      stateMutability: 'payable',
+      type: 'fallback',
+      constant: undefined
+    },
+    {
+      anonymous: false,
+      inputs: [Array],
+      name: 'NewBetIsSet',
+      type: 'event',
+      signature: '0x1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b12',
+      constant: undefined,
+      payable: undefined
+    },
+    {
+      anonymous: false,
+      inputs: [Array],
+      name: 'GameResult',
+      type: 'event',
+      signature: '0xf2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d',
+      constant: undefined,
+      payable: undefined
+    },
+    {
+      constant: false,
+      inputs: [],
+      name: 'getNewbet',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'nonpayable',
+      type: 'function',
+      signature: '0xe9b903f4'
+    },
+    {
+      constant: false,
+      inputs: [],
+      name: 'roll',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'nonpayable',
+      type: 'function',
+      signature: '0xcd5e3c5d'
+    },
+    {
+      constant: true,
+      inputs: [],
+      name: 'isBetSet',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'view',
+      type: 'function',
+      signature: '0x1ae651c8'
+    },
+    {
+      constant: true,
+      inputs: [],
+      name: 'getContractBalance',
+      outputs: [Array],
+      payable: false,
+      stateMutability: 'view',
+      type: 'function',
+      signature: '0x6f9fb98a'
+    }
+  ],
+  address: '0x73521b6116A2853E18c774A14a1d6962A9dE8418',
+  transactionHash: undefined,
+  contract: Contract {
+    currentProvider: [Getter/Setter],
+    _requestManager: RequestManager {
+      provider: [HttpProvider],
+      providers: [Object],
+      subscriptions: {}
+    },
+    givenProvider: null,
+    providers: {
+      WebsocketProvider: [Function: WebsocketProvider],
+      HttpProvider: [Function: HttpProvider],
+      IpcProvider: [Function: IpcProvider]
+    },
+    _provider: HttpProvider {
+      host: 'http://127.0.0.1:7545',
+      httpAgent: [Agent],
+      timeout: 0,
+      headers: undefined,
+      connected: true,
+      send: [Function],
+      _alreadyWrapped: true
+    },
+    setProvider: [Function],
+    BatchRequest: [Function: bound Batch],
+    extend: [Function: ex] {
+      formatters: [Object],
+      utils: [Object],
+      Method: [Function: Method]
+    },
+    clearSubscriptions: [Function],
+    options: { address: [Getter/Setter], jsonInterface: [Getter/Setter] },
+    defaultAccount: [Getter/Setter],
+    defaultBlock: [Getter/Setter],
+    methods: {
+      getNewbet: [Function: bound _createTxObject],
+      '0xe9b903f4': [Function: bound _createTxObject],
+      'getNewbet()': [Function: bound _createTxObject],
+      roll: [Function: bound _createTxObject],
+      '0xcd5e3c5d': [Function: bound _createTxObject],
+      'roll()': [Function: bound _createTxObject],
+      isBetSet: [Function: bound _createTxObject],
+      '0x1ae651c8': [Function: bound _createTxObject],
+      'isBetSet()': [Function: bound _createTxObject],
+      getContractBalance: [Function: bound _createTxObject],
+      '0x6f9fb98a': [Function: bound _createTxObject],
+      'getContractBalance()': [Function: bound _createTxObject]
+    },
+    events: {
+      NewBetIsSet: [Function: bound ],
+      '0x1a6d1c7cdda3e4348ddfb32842a3b51955212e84b454ebc11b068be843ee3b12': [Function: bound ],
+      'NewBetIsSet(address,uint8)': [Function: bound ],
+      GameResult: [Function: bound ],
+      '0xf2c19256ceef03eec7a00ba5e27726b55e9224b711266400dfe19267ac36f44d': [Function: bound ],
+      'GameResult(address,uint8,uint8)': [Function: bound ],
+      allEvents: [Function: bound ]
+    },
+    _address: '0x73521b6116A2853E18c774A14a1d6962A9dE8418',
+    _jsonInterface: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ]
+  },
+  NewBetIsSet: [Function],
+  GameResult: [Function],
+  getNewbet: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  roll: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  isBetSet: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  getContractBalance: [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  sendTransaction: [Function],
+  send: [Function],
+  allEvents: [Function],
+  getPastEvents: [Function]
+}
+undefined
+truffle(development)> 
+undefined
+truffle(development)> 
+undefined
+truffle(development)> 
+undefined
+truffle(development)> 
+undefined
+truffle(development)> await web3.eth.sendTransaction({ from: accounts[0], to: dice.address, value: web3.utils.toWei("1", "ether") })
+{
+  transactionHash: '0xb3c7fa14be19a0b122beea23b3127b770f12fe92b248363820bed9317dc1be68',
+  transactionIndex: 0,
+  blockNumber: 9,
+  blockHash: '0x19bf3cc9f36c4863da131a70c4ba6ff49b65b60db4a016f19f49add831c76bf8',
+  from: '0x15689f565d08187f3d2a4dc4da9023fcd3a63a5e',
+  to: '0x73521b6116a2853e18c774a14a1d6962a9de8418',
+  cumulativeGasUsed: 21040,
+  gasUsed: 21040,
+  contractAddress: null,
+  logs: [],
+  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+  status: true,
+  effectiveGasPrice: '0x4a817c800',
+  type: '0x0'
+}
+truffle(development)> const balance = await dice.getContractBalance()
+undefined
+truffle(development)> console.log(web3.utils.fromWei(balance,"ether"))
+1
+undefined
+truffle(development)> await dice.getNewbet({ from: accounts[1] })
+{
+  tx: '0x60dd1019d85b97df0731aae2f6efdfe3feda31ce8fd1de71cf1710e1b2d2c28f',
+  receipt: {
+    transactionHash: '0x60dd1019d85b97df0731aae2f6efdfe3feda31ce8fd1de71cf1710e1b2d2c28f',
+    transactionIndex: 0,
+    blockNumber: 10,
+    blockHash: '0x90a60720f11fc6006372096f1c39df692bcc5856710273b0d64320d988d064cf',
+    from: '0x1de9d087446392d088aa7266cde413c17bcf81e9',
+    to: '0x73521b6116a2853e18c774a14a1d6962a9de8418',
+    cumulativeGasUsed: 68385,
+    gasUsed: 68385,
+    contractAddress: null,
+    logs: [ [Object] ],
+    logsBloom: '0x00000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000004000000000000400000000000000000000000000000000000000000000000000000000000000000000000008000000000000200000000000000000000000000000000000000000000000000000000080000000000000000000100000000000000000000000000000000',
+    status: true,
+    effectiveGasPrice: '0x4a817c800',
+    type: '0x0',
+    rawLogs: [ [Object] ]
+  },
+  logs: [
+    {
+      address: '0x73521b6116A2853E18c774A14a1d6962A9dE8418',
+      blockHash: '0x90a60720f11fc6006372096f1c39df692bcc5856710273b0d64320d988d064cf',
+      blockNumber: 10,
+      logIndex: 0,
+      removed: false,
+      transactionHash: '0x60dd1019d85b97df0731aae2f6efdfe3feda31ce8fd1de71cf1710e1b2d2c28f',
+      transactionIndex: 0,
+      id: 'log_456eaee3',
+      event: 'NewBetIsSet',
+      args: [Result]
+    }
+  ]
+}
+truffle(development)> await dice.getNewbet({ from: accounts[1] })
+Uncaught:
+Error: Returned error: VM Exception while processing transaction: revert Bet already set
+    at XMLHttpRequest._onHttpResponseEnd (/usr/local/lib/node_modules/truffle/build/webpack:/~/xhr2-cookies/dist/xml-http-request.js:318:1)
+    at XMLHttpRequest._setReadyState (/usr/local/lib/node_modules/truffle/build/webpack:/~/xhr2-cookies/dist/xml-http-request.js:208:1)
+    at XMLHttpRequestEventTarget.dispatchEvent (/usr/local/lib/node_modules/truffle/build/webpack:/~/xhr2-cookies/dist/xml-http-request-event-target.js:34:1)
+    at XMLHttpRequest.request.onreadystatechange (/usr/local/lib/node_modules/truffle/build/webpack:/~/web3/~/web3-providers-http/src/index.js:96:1)
+    at /usr/local/lib/node_modules/truffle/build/webpack:/packages/truffle-provider/wrapper.js:112:1
+    at /usr/local/lib/node_modules/truffle/build/webpack:/~/web3-eth/~/web3-core-requestmanager/src/index.js:140:1
+    at Object.ErrorResponse (/usr/local/lib/node_modules/truffle/build/webpack:/~/web3-eth/~/web3-core-helpers/src/errors.js:29:1)
+truffle(development)> await dice.getNewbet({ from: accounts[0] })
+{
+  tx: '0xe73cd9b65083d0c38a1d82817ad4e733d96b4a9e9ae7808d869271a5654c7f87',
+  receipt: {
+    transactionHash: '0xe73cd9b65083d0c38a1d82817ad4e733d96b4a9e9ae7808d869271a5654c7f87',
+    transactionIndex: 0,
+    blockNumber: 12,
+    blockHash: '0x7426d35bfdb4efdfdbdeefeefa9635fe32fa2b8a072779af7edcb75281947831',
+    from: '0x15689f565d08187f3d2a4dc4da9023fcd3a63a5e',
+    to: '0x73521b6116a2853e18c774a14a1d6962a9de8418',
+    cumulativeGasUsed: 51285,
+    gasUsed: 51285,
+    contractAddress: null,
+    logs: [ [Object] ],
+    logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000400000000000000000000000000000000000000000000000000000000000000000000000008000100000000000000000000000000000000000800000000000000000000000000000080000000000000000000100000000000000000000000000000000',
+    status: true,
+    effectiveGasPrice: '0x4a817c800',
+    type: '0x0',
+    rawLogs: [ [Object] ]
+  },
+  logs: [
+    {
+      address: '0x73521b6116A2853E18c774A14a1d6962A9dE8418',
+      blockHash: '0x7426d35bfdb4efdfdbdeefeefa9635fe32fa2b8a072779af7edcb75281947831',
+      blockNumber: 12,
+      logIndex: 0,
+      removed: false,
+      transactionHash: '0xe73cd9b65083d0c38a1d82817ad4e733d96b4a9e9ae7808d869271a5654c7f87',
+      transactionIndex: 0,
+      id: 'log_d667691c',
+      event: 'NewBetIsSet',
+      args: [Result]
+    }
+  ]
+}
+truffle(development)> const isSet = await dice.isBetSet({ from: accounts[0] })
+undefined
+truffle(development)> console.log("Bet set?", isSet)
+Bet set? true
+undefined
+truffle(development)> const tx = await dice.roll({ from: accounts[0] })
+undefined
+truffle(development)> const result = tx.logs[0].args
+undefined
+truffle(development)> console.log("Rolled:", result.destiny.toString())
+Rolled: 1
+undefined
+truffle(development)> console.log("Bet:", result.currentBet.toString())
+Bet: 5
+undefined
+truffle(development)> console.log("Rolled:", result.destiny.toString())
+Rolled: 1
+undefined
+truffle(development)> console.log("Bet:", result.currentBet.toString())
+Bet: 5
+undefined
+truffle(development)> 
+
+

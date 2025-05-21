@@ -1,0 +1,166 @@
+CCS339 CRYPTOCURRENCY AND BLOCKCHAIN TECHNOLOGIES
+===================================================
+EX:NO3:Interact with a blockchain network. Execute transactions and requests against a blockchain
+network.(Ethereum)
+
+student@RV-ML2-UBU:sudo apt install nodejs
+student@RV-ML2-UBU:sudo apt install npm
+student@RV-ML2-UBU:sudo npm install -g truffle@5.0.5
+student@RV-ML2-UBU:/home/soft$ ./ganache-2.7.1-linux-x86_64.AppImage
+
+16:32:51.734 › Checking for update
+16:32:51.748 › Generated new staging user ID: 2d8ebe9f-724b-5391-b125-bbe6691bd2ea
+16:32:53.516 › Update for version 2.7.1 is not available (latest version: 2.7.1, downgrade is disallowed).
+listen to truffle
+listen to truffle
+
+--------------------------
+
+student@RV-ML2-UBU:/home/soft$ cd
+student@RV-ML2-UBU:~$ ls
+add.py  Desktop  Documents  Downloads  fabric  go1.17.3.linux-amd64.tar.gz  Music  myapp  myapp1  Pictures  Public  snap  Templates  Videos  vishnu
+student@RV-ML2-UBU:~$ mkdir ex3
+student@RV-ML2-UBU:~$ cd ex3
+
+student@RV-ML2-UBU:~/ex3$ code . [vscode window will be opened]
+---Changes and Files To Be Created Inside Vscode-----
+[45-49th line(uncomment)
+ Change the port number as per your ganache(settings-->server-->port number)
+]
+[Create a contract
+[
+//SPDX-License-Identifier:MIT
+pragma solidity ^0.5.0;
+contract Hello{
+    string public greeting;
+    constructor() public{
+        greeting="Initial Greeting";
+    }
+    function setGreeting(string memory _greeting)public{
+        greeting = _greeting;
+    }
+function getGreeting() public view returns(string memory){
+    return greeting;
+}
+    }
+] 
+migrations file 
+ [const Hello=artifacts.require("Hello");
+module.exports=function(deployer){
+    deployer.deploy(Hello);
+}
+]
+
+
+student@RV-ML2-UBU:~/ex3$ truffle init
+--------
+Output:
+---------
+✔ Preparing to download
+✔ Downloading
+✔ Cleaning up temporary files
+✔ Setting up box
+Unbox successful. Sweet!
+Commands:
+  Compile:        truffle compile
+  Migrate:        truffle migrate
+  Test contracts: truffle test
+
+student@RV-ML2-UBU:~/ex3$ sudo truffle compile
+--------
+Output:
+---------
+Compiling ./contracts/Hello.sol...
+Writing artifacts to ./build/contracts
+
+student@RV-ML2-UBU:~/ex3$ sudo truffle migrate
+--------
+Output:
+---------
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'development'
+> Network id:      5777
+> Block gas limit: 6721975
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x37bdfd856878582041786769dead874c596e6c8e1ebbf6f1c5a9764c94c8e993
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x624F9516594D5eBc012D36A8B6161d3BCb6959a4
+   > account:             0xe583B3cf6A2D5083FCe2C31fe30482906819C9C5
+   > balance:             99.99168396
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+2_deploy.js
+===========
+
+   Deploying 'Hello'
+   -----------------
+   > transaction hash:    0x6551516dfd0f23e0b7b1a9ec97f7a63d719bc66b835805027835ea2debe9f9f5
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x9F37Bf481Fb00247CDcb015BF4cDDeb8AEC78B3c
+   > account:             0xe583B3cf6A2D5083FCe2C31fe30482906819C9C5
+   > balance:             99.9852036
+   > gas used:            324018
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00648036 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00648036 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.01063838 ETH
+
+student@RV-ML2-UBU:~/ex3$ sudo truffle console
+--------
+Output:
+---------
+truffle(development)> let myinstance=await Hello.deployed()
+undefined
+truffle(development)> myinstance.getGreeting()
+'Initial Greeting'
+truffle(development)> myinstance.setGreeting("DW")
+{
+  tx: '0x1edc8008aced64239b19efade78c7e727e0dcd1a96bd9c954c7cdcca7286ccca',
+  receipt: {
+    transactionHash: '0x1edc8008aced64239b19efade78c7e727e0dcd1a96bd9c954c7cdcca7286ccca',
+    transactionIndex: 0,
+    blockNumber: 4,
+    blockHash: '0xb179e76d323b28b947ee6ac6f82ae51e5d81bcdae7a68299abb7b0efbe86cd58',
+    from: '0xe583b3cf6a2d5083fce2c31fe30482906819c9c5',
+    to: '0x9f37bf481fb00247cdcb015bf4cddeb8aec78b3c',
+    cumulativeGasUsed: 29648,
+    gasUsed: 29648,
+    contractAddress: null,
+    logs: [],
+    logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+    status: true,
+    effectiveGasPrice: '0x4a817c800',
+    type: '0x0',
+    rawLogs: []
+  },
+  logs: []
+}
+

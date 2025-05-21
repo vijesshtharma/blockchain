@@ -1,0 +1,92 @@
+EX:No:1B  
+ 
+ Develop a  Simple Calculator Program using JAVA Programming Language and run it in Docker Container
+
+using gedit create the Calculator.java Program (gedit Calculator.java)
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Simple Calculator");
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter operation (+, -, *, /): ");
+        char op = scanner.next().charAt(0);
+
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+
+        double result;
+        switch (op) {
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/': 
+                if (num2 == 0) {
+                    System.out.println("Error: Division by zero");
+                    return;
+                }
+                result = num1 / num2;
+                break;
+            default:
+                System.out.println("Invalid operation.");
+                return;
+        }
+
+        System.out.println("Result: " + result);
+    }
+}
+
+
+
+using gedit create the Dockerfile Program (gedit Dockerfile)
+# Use an official OpenJDK image
+FROM openjdk:17-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Java file into the container
+COPY Calculator.java .
+
+# Compile the Java file
+RUN javac Calculator.java
+
+# Run the program
+CMD ["java", "Calculator"]
+
+
+// OUTPUT & EXECUTION STEPS
+student@CSE-RL-WS-01:~$ docker build -t java-calculator .
+
+//Execution Process:
+[+] Building 28.0s (9/9) FINISHED                                docker:default
+=> => transferring context: 1.14kB                                        0.0s
+ => [2/4] WORKDIR /app                                                     0.1s
+ => [3/4] COPY Calculator.java .                                           0.0s
+ => [4/4] RUN javac Calculator.java                                        0.4s
+ => exporting to image                                                     0.0s
+ => => exporting layers                                                    0.0s
+ => => writing image sha256:37b121da1a0b8790ff7319c0e66d32bf01e449f4ff578  0.0s
+ => => naming to docker.io/library/java-calculator  
+
+student@CSE-RL-WS-01:~$ docker run -it java-calculator
+
+Simple Calculator
+Enter first number: 4
+Enter operation (+, -, *, /): 
++
+Enter second number: 5
+Result: 9.0
+
+student@CSE-RL-WS-01:~$ docker run -it java-calculator
+Simple Calculator
+Enter first number: 8
+Enter operation (+, -, *, /): *
+Enter second number: 5
+Result: 40.0
+

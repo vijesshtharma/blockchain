@@ -1,0 +1,248 @@
+Ex:no:2
+Create and deploy a blockchain network using Hyperledger Fabric SDK for Java Set up and initialize the channel, install and instantiate chain code, and perform invoke and query on your blockchain network.
+
+
+\\ Prerequisites  - Install the required dependencies:
+student@CSE-RL-WS-01:~$ sudo apt update
+
+Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
+Hit:2 http://in.archive.ubuntu.com/ubuntu jammy InRelease                      
+Hit:3 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 InRelease      
+Hit:4 http://in.archive.ubuntu.com/ubuntu jammy-updates InRelease 
+
+student@CSE-RL-WS-01:~$ sudo apt install git
+
+// starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+git is already the newest version (1:2.34.1-1ubuntu1.12).
+The following packages were automatically installed and are no longer required:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 24 not upgraded.
+
+student@CSE-RL-WS-01:~$ sudo apt install curl
+
+// starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+curl is already the newest version (7.81.0-1ubuntu1.20).
+The following packages were automatically installed and are no longer required:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 24 not upgraded.
+
+student@CSE-RL-WS-01:~$ wget https://golang.org/dl/go1.17.3.linux-amd64.tar.gz
+
+--2025-04-08 12:07:47--  https://golang.org/dl/go1.17.3.linux-amd64.tar.gz
+Resolving golang.org (golang.org)... 142.250.182.113, 2404:6800:4007:81c::2011
+Connecting to golang.org (golang.org)|142.250.182.113|:443... connected.
+go1.17.3.linux-amd6 100%[===================>] 128.56M  10.7MB/s    in 12s     
+2025-04-08 12:08:01 (10.7 MB/s) - ‘go1.17.3.linux-amd64.tar.gz’ saved [134804820/134804820]
+
+student@CSE-RL-WS-01:~$sudo rm -rf /usr/local/go
+student@CSE-RL-WS-01:~$sudo tar -C /usr/local -xzvf go1.17.3.linux-amd64.tar.gz
+student@CSE-RL-WS-01:~$ sudo apt install jq
+
+// starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+jq is already the newest version (1.6-2.1ubuntu3).
+The following packages were automatically installed and are no longer required:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 24 not upgraded.
+
+student@CSE-RL-WS-01:~$ sudo apt install docker*
+// starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Note, selecting 'docker-compose' for glob 'docker*'
+docker is already the newest version (1.5-2).
+docker-clean is already the newest version (2.0.4-4).
+docker-compose is already the newest version (1.29.2-1).
+docker-compose-v2 is already the newest version (2.27.1+ds1-0ubuntu1~22.04.1).
+docker-doc is already the newest version (26.1.3-0ubuntu1~22.04.1).
+docker.io is already the newest version (26.1.3-0ubuntu1~22.04.1).
+The following packages were automatically installed and are no longer required:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 24 not upgraded.
+
+student@CSE-RL-WS-01:~$ sudo apt install docker-compose
+
+// starting line
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+docker-compose is already the newest version (1.29.2-1).
+
+\\Check all the dependencies version  using a  command
+
+student@CSE-RL-WS-01:~$ git --version
+git version 2.34.1
+
+student@CSE-RL-WS-01:~$ curl --version
+curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.18
+Release-Date: 2022-01-05
+
+student@CSE-RL-WS-01:~$ go version
+go version go1.18.1 linux/amd64
+
+student@CSE-RL-WS-01:~$ docker --version
+Docker version 26.1.3, build 26.1.3-0ubuntu1~22.04.1
+
+student@CSE-RL-WS-01:~$ docker-compose --version
+docker-compose version 1.29.2, build unknown
+
+student@CSE-RL-WS-01:~$ jq --version
+jq-1.6
+
+student@CSE-RL-WS-01:~$ java --version
+openjdk 17.0.14 2025-01-21
+OpenJDK Runtime Environment (build 17.0.14+7-Ubuntu-122.04.1)
+OpenJDK 64-Bit Server VM (build 17.0.14+7-Ubuntu-122.04.1, mixed mode, sharing)
+
+student@CSE-RL-WS-01:~$ mkdir Fabric4
+
+student@CSE-RL-WS-01:~$ cd Fabric4
+
+student@CSE-RL-WS-01:~/Fabric4$ sudo systemctl status docker
+
+docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset>
+     Active: active (running) since Tue 2025-04-08 11:02:45 IST; 1h 14min ago
+     ( Terminair from Docker application press ( Ctrl+c)
+  
+student@CSE-RL-WS-01:~/Fabric4$ sudo usermod -aG docker student
+
+student@CSE-RL-WS-01:~/Fabric4$ newgrp docker
+
+student@CSE-RL-WS-01:~/Fabric4$ curl -sSL https://bit.ly/2ysbOFE | bash -s 
+
+// starting line
+Clone hyperledger/fabric-samples repo
+===> Cloning hyperledger/fabric-samples repo
+Cloning into 'fabric-samples'...
+remote: Enumerating objects: 14778, done.
+hyperledger/fabric-orderer   2.5       fa56384e2773   4 weeks ago     118MB
+hyperledger/fabric-peer      2.5       6f5d5d210c59   4 weeks ago     151MB
+hyperledger/fabric-ccenv     latest    b30e9cc39553   4 weeks ago     676MB
+hyperledger/fabric-baseos    latest    133ecaf78b3e   4 weeks ago     142MB
+hyperledger/fabric-ca        1.5.15    09cb0b50ebdb   8 weeks ago     225MB
+hyperledger/fabric-orderer   2.5.11    2a64615f0271   2 months ago    118MB
+
+student@CSE-RL-WS-01:~/Fabric4$ export PATH=/home/student/fabric/fabric-samples/bin:$PATH
+student@CSE-RL-WS-01:~/Fabric4$ cd fabric-samples
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ ./network.sh up
+
+// starting line
+Using docker and docker-compose
+Starting nodes with CLI timeout of '5' tries and CLI delay of '3' seconds and using database 'leveldb' with crypto from 'cryptogen'
+LOCAL_VERSION=v2.5.12
+DOCKER_IMAGE_VERSION=v2.5.12
+reating orderer.example.com    ... done
+Creating peer0.org1.example.com ... done
+Creating peer0.org2.example.com ... done
+CONTAINER ID   IMAGE COMMAND CREATED STATUS PORTS                                                                                                                             NAMES
+a5908bc65c49   hyperledger/fabric-peer:latest      "peer node start"   1 second ago   Up Less than a second   0.0.0.0:7051->7051/tcp, :::7051->7051/tcp, 0.0.0.0:9444->9444/tcp, :::9444->9444/tcp                                              peer0.org1.example.com
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ docker ps -a
+
+CONTAINER ID   IMAGE                               COMMAND             CREATED         STATUS         PORTS                                                                                                                             NAMES
+a5908bc65c49   hyperledger/fabric-peer:latest      "peer node start"   2 minutes ago   Up 2 minutes   0.0.0.0:7051->7051/tcp, :::7051->7051/tcp, 0.0.0.0:9444->9444/tcp, :::9444->9444/tcp                                              peer0.org1.example.com
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ ./network.sh createChannel
+
+//starting line
+Using docker and docker-compose
+Creating channel 'mychannel'.
+//ending line
+025-04-08 12:34:45.184 IST 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2025-04-08 12:34:45.190 IST 0002 INFO [channelCmd] update -> Successfully submitted channel update
+Anchor peer set for org 'Org2MSP' on channel 'mychannel'
+Channel 'mychannel' joined
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
+
+
+\\starting line
+Using docker and docker-compose
+deploying chaincode on channel 'mychannel'
+\\ending line
+Committed chaincode definition for chaincode 'basic' on channel 'mychannel':
+Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]
+Query chaincode definition successful on peer0.org2 on channel 'mychannel'
+Chaincode initialization is not required
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ gedit  ~/.bashrc 
+
+In bashrc file type the command at the end of file
+#export GOROOT=/usr/local/go
+#export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=/home/student/Fabric4/fabric-samples/bin:$PATH
+export PATH=$PATH:/home/student/Fabric4/fabric-samples/bin
+export FABRIC_CFG_PATH=/home/student/Fabric4/fabric-samples/config
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+#Set environment variables for Org1
+export CORE_PEER_TLS_ENABLED=true
+export CORE_PEER_LOCALMSPID="Org1MSP"
+export CORE_PEER_TLS_ROOTCERT_FILE=/home/student/Fabric4/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=/home/student/Fabric4/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+export CORE_PEER_ADDRESS=localhost:7051
+
+and press the save button
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ source  ~/.bashrc
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ peer node start
+
+// starting line
+2025-04-08 12:47:20.443 IST 0001 INFO [nodeCmd] serve -> Starting peer:
+ Version: v2.5.12
+ Commit SHA: af0b647
+ Go version: go1.23.5
+ OS/Arch: linux/amd64
+ Chaincode:
+  Base Docker Label: org.hyperledger.fabric
+  Docker Namespace: hyperledger
+//ending line
+main.main()
+	/home/runner/work/fabric/fabric/cmd/peer/main.go:56 +0x33b
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ peer node status
+Operate a peer node: start|reset|rollback|pause|resume|rebuild-dbs|unjoin|upgrade-dbs.
+
+Usage:
+  peer node [command]
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ docker ps | grep peer
+
+58936f26533b   dev-peer0.org1.example.com-basic_1.0-18acccca2fe08dcdc5e4f3bafb51486a6f18eb594590ccf1fd7bdffc29a9b286-326f54924f1707c2356e147494d1a983ee5175f0d79b7647d21e6968321ac568   "chaincode -peer.add…"   12 minutes ago   Up 12 minutes 
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/student/Fabric4/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles /home/student/Fabric4/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles /home/student/Fabric4/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"InitLedger","Args":[]}'
+
+2025-04-08 12:51:31.157 IST 0001 INFO [chaincodeCmd] chaincodeInvokeOrQuery -> Chaincode invoke successful. result: status:200 
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ peer chaincode query -C mychannel -n basic -c '{"Args":["GetAllAssets"]}'
+
+[{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5},{"AppraisedValue":400,"Color":"red","ID":"asset2","Owner":"Brad","Size":5},{"AppraisedValue":500,"Color":"green","ID":"asset3","Owner":"Jin Soo","Size":10},{"AppraisedValue":600,"Color":"yellow","ID":"asset4","Owner":"Max","Size":10},{"AppraisedValue":700,"Color":"black","ID":"asset5","Owner":"Adriana","Size":15},{"AppraisedValue":800,"Color":"white","ID":"asset6","Owner":"Michel","Size":15}]
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ peer chaincode query -C mychannel -n basic -c '{"Args":["ReadAsset","asset6"]}'
+
+{"AppraisedValue":800,"Color":"white","ID":"asset6","Owner":"Michel","Size":15}
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/student/Fabric4/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles /home/student/Fabric4/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles /home/student/Fabric4/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"TransferAsset","Args":["asset6","priya"]}'
+
+2025-04-08 12:54:05.121 IST 0001 INFO [chaincodeCmd] chaincodeInvokeOrQuery -> Chaincode invoke successful. result: status:200 payload:"Michel" 
+
+student@CSE-RL-WS-01:~/Fabric4/fabric-samples/test-network$ peer chaincode query -C mychannel -n basic -c '{"Args":["ReadAsset","asset6"]}'
+
+{"AppraisedValue":800,"Color":"white","ID":"asset6","Owner":"priya","Size":15}
+
+
+
