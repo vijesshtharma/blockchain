@@ -1,0 +1,117 @@
+ (dpkg -l | grep -i docker
+sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli docker-compose-plugin
+sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce docker-compose-plugin
+sudo rm -rf /var/lib/docker /etc/docker
+sudo rm /etc/apparmor.d/docker
+sudo groupdel docker
+sudo rm -rf /var/run/docker.sock
+sudo rm -rf /var/lib/containerd
+sudo rm -r ~/.docker) to remove docker
+
+sudo apt install git 
+git --version
+sudo apt install curl
+curl --version
+wget https://golang.org/dl/go1.17.3.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzvf go1.17.3.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version [go version go1.18.1 linux/amd64]
+sudo nano /etc/bash.bashrc
+sudo apt install ca-certificates gnupg lsb-release
+student@rv-ml2:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+File '/usr/share/keyrings/docker-archive-keyring.gpg' exists. Overwrite? (y/N) y
+
+student@rv-ml2:~$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+student@rv-ml2:~$ sudo apt update
+student@rv-ml2:~$ sudo apt install docker-ce docker-ce-cli containerd.io
+student@rv-ml2:~$ sudo groupadd docker
+student@rv-ml2:~$ sudo usermod -aG docker $USER
+student@rv-ml2:~$ docker
+student@rv-ml2:~$ sudo docker version
+student@rv-ml2:~$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o/usr/local/bin/docker-compose
+student@rv-ml2:~$ sudo chmod +x /usr/local/bin/docker-compose
+student@rv-ml2:~$ docker compose version
+student@rv-ml2:~$ mkdir fabric
+student@rv-ml2:~$ cd fabric
+student@rv-ml2:~/fabric$ curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.2.15 1.5.9
+[student@rv-ml2:~/fabric$ groups
+student@rv-ml2:~/fabric$ sudo usermod -aG docker $USER
+student@rv-ml2:~/fabric$ newgrp docker
+student@rv-ml2:~/fabric$ sudo systemctl status docker]
+student@rv-ml2:~/fabric$ ls
+fabric-samples
+student@rv-ml2:~/fabric$ cd fabric-samples
+student@rv-ml2:~/fabric/fabric-samples$ ls
+student@rv-ml2:~/fabric/fabric-samples$ cd bin
+student@rv-ml2:~/fabric/fabric-samples/bin$ ls
+student@rv-ml2:~/fabric/fabric-samples/bin$ pwd
+student@rv-ml2:~/fabric/fabric-samples/bin$ export PATH=$PATH:/home/student/fabric/fabric-samples/bin
+
+student@rv-ml2:~/fabric/fabric-samples/bin$ nano ~/.bashrc
+
+[type this inside nano file:   export PATH=$PATH:/home/student/fabric/fabric-samples/bin]
+
+student@rv-ml2:~/fabric/fabric-samples/bin$ cryptogen
+student@rv-ml2:~/fabric/fabric-samples/bin$ configtxgen
+student@rv-ml2:~/fabric/fabric-samples/bin$ peer version
+tudent@rv-ml2:~/fabric/fabric-samples/bin$ cd
+student@rv-ml2:~$ cd fabric
+student@rv-ml2:~/fabric$ cd fabric-samples
+student@rv-ml2:~/fabric/fabric-samples$ cd test-network
+student@rv-ml2:~/fabric/fabric-samples/test-network$ ls
+student@rv-ml2:~/fabric/fabric-samples/test-network$ ./network.sh up
+   (if there is an error then remove the existing network by this command:
+    docker stop 811dc95ae2af ba8d869b03bf 9dd17a14fdec
+    docker rm 811dc95ae2af ba8d869b03bf 9dd17a14fdec [with the corresponding peerid] 
+    then..
+    docker system prune -af  # Removes stopped containers, unused networks, and dangling images
+    docker volume prune -f  # Removes unused volumes
+    )
+  again give this:
+ student@rv-ml2:~/fabric/fabric-samples/test-network$ ./network.sh up
+
+student@rv-ml2:~/fabric/fabric-samples/test-network$ docker ps
+student@rv-ml2:~/fabric/fabric-samples/test-network$ docker logs -f 207442e113eb #(peer id)
+q^C
+student@rv-ml2:~/fabric/fabric-samples/test-network$ ./network.sh createChannel
+tudent@rv-ml2:~/fabric/fabric-samples/test-network$ ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
+student@rv-ml2:~/fabric/fabric-samples/test-network$ cd ..
+student@rv-ml2:~/fabric/fabric-samples$ ls
+student@rv-ml2:~/fabric/fabric-samples$ cd asset-transfer-basic  
+student@rv-ml2:~/fabric/fabric-samples/asset-transfer-basic$ ls
+student@rv-ml2:~/fabric/fabric-samples/asset-transfer-basic$ cd chaincode-go 
+student@rv-ml2:~/fabric/fabric-samples/asset-transfer-basic/chaincode-go$ ls
+student@rv-ml2:~/fabric/fabric-samples/asset-transfer-basic/chaincode-go$ pwd
+student@rv-ml2:~/fabric/fabric-samples/asset-transfer-basic/chaincode-go$ cd ..
+student@rv-ml2:~/fabric/fabric-samples/asset-transfer-basic$ cd ..
+student@rv-ml2:~/fabric/fabric-samples$ cd test-network
+student@rv-ml2:~/fabric/fabric-samples/test-network$ ./network.sh deployCC -ccn mychaincode -ccp ../asset-transfer-basic/chaincode-go -ccl go
+student@rv-ml2:~/fabric/fabric-samples/test-network$ export FABRIC_CFG_PATH=$PWD/../config/
+student@rv-ml2:~/fabric/fabric-samples/test-network$ export CORE_PEER_TLS_ENABLED=true
+student@rv-ml2:~/fabric/fabric-samples/test-network$ export CORE_PEER_LOCALMSPID="Org1MSP"
+student@rv-ml2:~/fabric/fabric-samples/test-network$ export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+student@rv-ml2:~/fabric/fabric-samples/test-network$ export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+student@rv-ml2:~/fabric/fabric-samples/test-network$ export CORE_PEER_ADDRESS=localhost:7051
+student@rv-ml2:~/fabric/fabric-samples/test-network$ echo $FABRIC_CFG_PATH
+student@rv-ml2:~/fabric/fabric-samples/test-network$ peer chaincode invoke -o localhost:7050 \
+--ordererTLSHostnameOverride orderer.example.com \
+--tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem \
+-C mychannel \
+-n mychaincode \
+--peerAddresses localhost:7051 \
+--tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt \
+--peerAddresses localhost:9051 \
+--tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"InitLedger","Args":[]}'
+
+student@rv-ml2:~/fabric/fabric-samples/test-network$ docker ps
+student@rv-ml2:~/fabric/fabric-samples/test-network$ docker logs 0fc9a7946e1c
+student@rv-ml2:~/fabric/fabric-samples/test-network$ peer chaincode query -C mychannel -n mychaincode -c '{"Args":["GetAllAssets"]}'
+student@rv-ml2:~/fabric/fabric-samples/test-network$ peer chaincode query -C mychannel -n mychaincode -c '{"Args":["ReadAsset","asset6"]}'
+
+student@rv-ml2:~/fabric/fabric-samples/test-network$ peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mychaincode --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"function":"TransferAsset","Args":["asset6","Pooja"]}'
+
+student@rv-ml2:~/fabric/fabric-samples/test-network$ peer chaincode query -C mychannel -n mychaincode -c '{"Args":["ReadAsset","asset6"]}'
+
