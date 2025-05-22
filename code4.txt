@@ -1,0 +1,122 @@
+const accounts = await web3.eth.getAccounts()
+const dice = await Dice.deployed()
+
+// Fund the contract
+await web3.eth.sendTransaction({ from: accounts[0], to: dice.address, value: web3.utils.toWei("1", "ether") })
+
+// Show contract balance
+let balance = await dice.getContractBalance()
+console.log("Contract Balance:", web3.utils.fromWei(balance, "ether"), "ETH")
+
+// User manually chooses number 5
+await dice.placeBet(5, { from: accounts[1] })
+
+// Confirm bet
+let isSet = await dice.isBetSet({ from: accounts[1] })
+console.log("Bet set?", isSet)
+
+// Roll the dice
+let tx = await dice.roll({ from: accounts[1] })
+let result = tx.logs[0].args
+console.log("Bet:", result.currentBet.toString())
+console.log("Rolled:", result.destiny.toString())
+console.log("Won?", result.won)
+
+// Show contract balance again
+balance = await dice.getContractBalance()
+console.log("Contract Balance after roll:", web3.utils.fromWei(balance, "ether"), "ETH")
+
+
+
+
+
+
+
+//////
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.5.0;
+
+contract Dice {
+    struct Bet {
+        uint8 currentBet;
+        bool isBetSet;
+        uint8 destiny;
+    }
+
+    mapping(address => Bet) private bets;
+    uint8 private randomFactor;
+
+    event NewBetIsSet(address indexed bidder, uint8 currentBet);
+    event GameResult(address indexed bidder, uint8 currentBet, uint8 destiny, bool won);
+
+   
+    function placeBet(uint8 _bet) public {
+        require(_bet >= 1 && _bet <= 6, "Bet must be between 1 and 6");
+        require(!bets[msg.sender].isBetSet, "Previous bet not resolved");
+
+        bets[msg.sender] = Bet({
+            currentBet: _bet,
+            isBetSet: true,
+            destiny: 0
+        });
+
+        randomFactor += _bet;
+
+        emit NewBetIsSet(msg.sender, _bet);
+    }
+
+   
+    function roll() public returns (address, uint8, uint8, bool) {
+        require(bets[msg.sender].isBetSet, "No active bet");
+
+        uint8 destiny = random();
+        bets[msg.sender].destiny = destiny;
+        randomFactor += destiny;
+
+        bool won = false;
+        if (destiny == bets[msg.sender].currentBet) {
+            uint256 reward = 0.01 ether;  
+            require(address(this).balance >= reward, "Not enough balance");
+            _transferReward(msg.sender, reward);
+            won = true;
+        }
+
+        emit GameResult(msg.sender, bets[msg.sender].currentBet, destiny, won);
+
+       
+        bets[msg.sender].isBetSet = false;
+
+        return (msg.sender, bets[msg.sender].currentBet, destiny, won);
+    }
+
+    function isBetSet() public view returns (bool) {
+        return bets[msg.sender].isBetSet;
+    }
+
+    function random() private view returns (uint8) {
+        uint256 blockValue = uint256(blockhash(block.number - 1)) + now + randomFactor;
+        return uint8((blockValue % 6) + 1);
+    }
+
+    function _transferReward(address winner, uint256 amount) private {
+        address(uint160(winner)).transfer(amount);
+    }
+
+    function() external payable {}
+
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+
+
+
+
+////
+
+
+const Dice = artifacts.require("Dice");
+
+module.exports = function (deployer) {
+  deployer.deploy(Dice);
+};
